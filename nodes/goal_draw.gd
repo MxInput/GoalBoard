@@ -1,6 +1,16 @@
 extends TextureButton
 
-var unfinished_good : UnfinishedGoal;
+var unfinished_goal : UnfinishedGoal;
 
+signal activate_draw(selected_go);
+
+func _ready() -> void:
+	var canvas_layer = get_node("/root/Menu/CanvasLayer");
+	var drawHandler = canvas_layer.find_child("DrawingTab");
+	var drawing = drawHandler.find_child("Drawing");
+	
+	if (drawing != null):
+		activate_draw.connect(drawing.start_drawing);
+		
 func _on_button_down() -> void:
-	pass # Replace with function body.
+	activate_draw.emit(unfinished_goal);

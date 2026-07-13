@@ -1,160 +1,31 @@
-[gd_scene format=3 uid="uid://dxkj1mq420y6a"]
+[gd_scene format=3 uid="uid://cfb8drx7wvrdf"]
 
-[ext_resource type="Script" uid="uid://5y66omfn7043" path="res://nodes/draw.gd" id="1_k4sgw"]
-[ext_resource type="PackedScene" uid="uid://8irupc3xmvho" path="res://nodes/goal.tscn" id="2_8forb"]
-[ext_resource type="Texture2D" uid="uid://rvisxhln4c20" path="res://icon.svg" id="2_xy510"]
-[ext_resource type="Texture2D" uid="uid://b52ijj6tvk7hc" path="res://bow_bg.png" id="3_8kn72"]
-[ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="3_inolc"]
-[ext_resource type="Script" uid="uid://b3hmuqqepo4mc" path="res://nodes/goal_creation.gd" id="5_y8uiq"]
-[ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="6_1dvco"]
-[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://bow_button.png" id="8_6fa86"]
+[ext_resource type="Script" uid="uid://dtxvstvg7jirl" path="res://nodes/move_camera.gd" id="1_k4sgw"]
 
-[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_kc3a4"]
+[node name="Board" type="Node" unique_id=1006576281]
 
-[node name="Board" type="Node" unique_id=1227418922]
+[node name="Background" type="ColorRect" parent="." unique_id=151846489]
+offset_left = -1996.0
+offset_top = -747.0
+offset_right = 3388.0
+offset_bottom = 2414.0
+color = Color(0.9986002, 0.8335006, 0.9089892, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1255491717]
+[node name="Liner" type="ColorRect" parent="." unique_id=186165036]
+offset_left = -1148.0
+offset_top = -61.0
+offset_right = 1679.0
+offset_bottom = 1439.0
+color = Color(0.9957759, 0.44732118, 0.7440068, 1)
 
-[node name="GoalCreation" type="Node" parent="." unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "v_box")]
-script = ExtResource("5_y8uiq")
-desc_box = NodePath("../CanvasLayer/TextEdit")
-desc_count = NodePath("../CanvasLayer/DescCount")
-create_button = NodePath("../CanvasLayer/Create")
-identifier_box = NodePath("../CanvasLayer/Identifier")
-identifier_count = NodePath("../CanvasLayer/IdentifierCount")
-v_box = NodePath("../CanvasLayer/ScrollContainer/VBoxContainer")
-temp_goal = ExtResource("2_8forb")
+[node name="Board" type="ColorRect" parent="." unique_id=908202324]
+offset_left = -1083.0
+offset_right = 1605.0
+offset_bottom = 1367.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1076521952]
-
-[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1437988000]
-offset_right = 1148.0
-offset_bottom = 654.0
-texture = ExtResource("3_8kn72")
-
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer" unique_id=1853837774]
-offset_left = 618.0
-offset_top = 207.0
-offset_right = 1142.0
-offset_bottom = 447.0
-theme_override_fonts/font = ExtResource("6_1dvco")
-placeholder_text = "Enter the description for your goal here."
-wrap_mode = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=2109574580]
-offset_left = 28.0
-offset_top = 103.0
-offset_right = 551.0
-offset_bottom = 578.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=294714044]
-propagate_maximum_size = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 40
-
-[node name="CreationTitle" type="RichTextLabel" parent="CanvasLayer" unique_id=816037086]
-offset_left = 593.0
-offset_top = 5.0
-offset_right = 1139.0
-offset_bottom = 124.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_inolc")
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[wave] CREATE A NEW GOAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GoalTitle" type="RichTextLabel" parent="CanvasLayer" unique_id=361505536]
-offset_left = 15.0
-offset_top = 5.0
-offset_right = 561.0
-offset_bottom = 124.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_inolc")
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[wave] CREATED GOALS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DescCount" type="Label" parent="CanvasLayer" unique_id=1964320505]
-offset_left = 619.0
-offset_top = 472.0
-offset_right = 1143.0
-offset_bottom = 495.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_1dvco")
-text = "0/300"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="IdentifierCount" type="Label" parent="CanvasLayer" unique_id=45195213]
-offset_left = 626.0
-offset_top = 161.0
-offset_right = 1134.0
-offset_bottom = 184.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_1dvco")
-text = "0/50"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Create" type="TextureButton" parent="CanvasLayer" unique_id=115747629]
-offset_left = 710.0
-offset_top = 506.0
-offset_right = 1066.0
-offset_bottom = 570.0
-texture_normal = ExtResource("8_6fa86")
-
-[node name="Label" type="Label" parent="CanvasLayer/Create" unique_id=1379687930]
-layout_mode = 0
-offset_right = 353.0
-offset_bottom = 52.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
-theme_override_fonts/font = ExtResource("3_inolc")
-theme_override_font_sizes/font_size = 30
-text = "CREATE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Identifier" type="LineEdit" parent="CanvasLayer" unique_id=1682138002]
-offset_left = 623.0
-offset_top = 119.0
-offset_right = 1139.0
-offset_bottom = 150.0
-theme_override_fonts/font = ExtResource("6_1dvco")
-placeholder_text = "Enter an Identifier for this goal."
-max_length = 50
-
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=997116994]
-offset_left = 13.0
-offset_top = 604.0
-offset_right = 179.0
-offset_bottom = 635.0
-text = "GO TO GOAL BOARD"
-
-[node name="DrawingTab" type="Control" parent="CanvasLayer" unique_id=519973302]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Drawing" type="TextureRect" parent="CanvasLayer/DrawingTab" unique_id=321332911]
-layout_mode = 0
-offset_left = 81.0
-offset_top = 182.0
-offset_right = 198.0
-offset_bottom = 246.0
-texture = SubResource("DrawableTexture2D_kc3a4")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
+limit_left = -1149
+limit_top = -60
+limit_right = 1681
+limit_bottom = 1441
 script = ExtResource("1_k4sgw")
-drawable_texture = SubResource("DrawableTexture2D_kc3a4")
-source_img = ExtResource("2_xy510")
-
-[connection signal="text_changed" from="CanvasLayer/TextEdit" to="GoalCreation" method="_on_text_edit_text_changed"]
-[connection signal="button_down" from="CanvasLayer/Create" to="GoalCreation" method="_on_create_button_down"]
-[connection signal="text_changed" from="CanvasLayer/Identifier" to="GoalCreation" method="_on_identifier_text_changed"]

@@ -8,11 +8,10 @@
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
 
 [node name="GoalButton" type="TextureRect" unique_id=110054324]
-custom_minimum_size = Vector2(512, 196)
+custom_minimum_size = Vector2(512, 236)
 offset_right = 515.0
 offset_bottom = 236.0
 texture = ExtResource("1_u2tcs")
-expand_mode = 1
 
 [node name="Date" type="Label" parent="." unique_id=1016183440]
 z_index = 2

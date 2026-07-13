@@ -16,6 +16,8 @@ var max_text_length := 300;
 @export var v_box : VBoxContainer;
 @export var temp_goal : PackedScene;
 
+@export var warning : Label;
+			
 func _on_text_edit_text_changed() -> void:
 	var new_text := desc_box.text;
 	
@@ -45,18 +47,18 @@ func _on_create_button_down() -> void:
 		
 		var new_goal := temp_goal.instantiate();
 		v_box.add_child(new_goal);
+		v_box.move_child(v_box.find_child("Space"), -1);
 		new_goal.find_child("Identifier").text = identifier_string;
 		new_goal.find_child("Description").get_child(0).text = desc_string;
 		var found_date = Time.get_date_dict_from_system();
 		new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
 		
 		var goal_entry = UnfinishedGoal.new(identifier_string, desc_string, found_date);
-		new_goal.find_child("Complete").unfinished_good = goal_entry;
+		new_goal.find_child("Complete").unfinished_goal = goal_entry;
 			
 		MemberVariables.new_member.unfinished_goals.push_back(goal_entry);
 	else:
-		print("enter your goals")
-
+		warning.visible = true;
 
 func _on_identifier_text_changed(_new_text: String) -> void:
 	identifier_count.text = str(identifier_box.text.length()) + "/" + str(identifier_box.max_length);
