@@ -49,7 +49,7 @@ func _on_create_button_down() -> void:
 		new_goal.find_child("Description").get_child(0).text = desc_string;
 		
 		var found_date = Time.get_date_dict_from_system();
-		new_goal.find_child("Date").text = str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
+		new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
 		
 	else:
 		print("enter your goals")

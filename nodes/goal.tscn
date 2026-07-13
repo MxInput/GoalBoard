@@ -1,52 +1,94 @@
 [gd_scene format=3 uid="uid://8irupc3xmvho"]
 
-[ext_resource type="Texture2D" uid="uid://csystmnjsf1pq" path="res://temp_button.png" id="1_7u34p"]
+[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://bow_button.png" id="1_3mf0w"]
+[ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://goal_pink.png" id="1_u2tcs"]
+[ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="2_3mf0w"]
+[ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="2_iy113"]
 [ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://nodes/goal_draw.gd" id="2_kalp8"]
+[ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
 
-[node name="TextureRect" type="TextureRect" unique_id=110054324]
-offset_right = 410.0
-offset_bottom = 138.0
-texture = ExtResource("1_7u34p")
+[node name="Control" type="Control" unique_id=267850266]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Date" type="Label" parent="." unique_id=1016183440]
+[node name="GoalButton" type="TextureRect" parent="." unique_id=1432972209]
+custom_minimum_size = Vector2(512, 196)
 layout_mode = 0
-offset_top = 56.0
-offset_right = 40.0
-offset_bottom = 79.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "12/24/2008"
+offset_right = 515.0
+offset_bottom = 236.0
+texture = ExtResource("1_u2tcs")
 
-[node name="Identifier" type="Label" parent="." unique_id=421251310]
+[node name="Date" type="Label" parent="GoalButton" unique_id=1515507802]
+z_index = 2
 layout_mode = 0
-offset_right = 289.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "making money"
+offset_left = 34.0
+offset_top = 104.0
+offset_right = 480.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
+theme_override_fonts/font = ExtResource("2_yweip")
+theme_override_font_sizes/font_size = 20
+text = "Created: 12/24/2008"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Complete" type="TextureButton" parent="." unique_id=80878045]
+[node name="Identifier" type="Label" parent="GoalButton" unique_id=1842168167]
+z_index = 2
+custom_maximum_size = Vector2(430, 71)
 layout_mode = 0
-offset_left = 202.0
-offset_top = 62.0
-offset_right = 394.0
-offset_bottom = 126.0
-texture_normal = ExtResource("1_7u34p")
+offset_left = 40.0
+offset_top = 34.0
+offset_right = 470.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6117647)
+theme_override_fonts/font = ExtResource("2_3mf0w")
+theme_override_font_sizes/font_size = 18
+text = "Making money"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Complete" type="TextureButton" parent="GoalButton" unique_id=110386689]
+z_index = 2
+layout_mode = 0
+offset_left = 161.0
+offset_top = 133.0
+offset_right = 361.0
+offset_bottom = 186.0
+texture_normal = ExtResource("1_3mf0w")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("2_kalp8")
 
-[node name="Label" type="Label" parent="Complete" unique_id=1486685357]
+[node name="Label" type="Label" parent="GoalButton/Complete" unique_id=2065974962]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 6.0
+offset_right = 197.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_iy113")
+theme_override_font_sizes/font_size = 24
 text = "COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Description" type="FoldableContainer" parent="." unique_id=572071310]
+[node name="Description" type="FoldableContainer" parent="GoalButton" unique_id=2002779128]
+z_index = 3
 layout_mode = 0
-offset_top = 81.0
-offset_right = 168.0
-offset_bottom = 136.0
+offset_left = 29.0
+offset_top = 188.0
+offset_right = 492.0
+offset_bottom = 273.0
+theme_override_fonts/font = ExtResource("2_yweip")
 folded = true
+title = "DESCRIPTION"
 
-[node name="Label" type="Label" parent="Description" unique_id=1403737377]
+[node name="Label" type="Label" parent="GoalButton/Description" unique_id=208672481]
 visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Want to be a bigshot"
