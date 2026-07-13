@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://8irupc3xmvho"]
+
+[node name="TextureRect" type="TextureRect" unique_id=110054324]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Date" type="Label" parent="." unique_id=1016183440]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Identifier" type="Label" parent="." unique_id=421251310]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Description" type="Label" parent="." unique_id=1403737377]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=80878045]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="TextureButton" unique_id=1486685357]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "COMPLETE"
