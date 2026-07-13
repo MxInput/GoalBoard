@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dyid7kj18j58k"
-path="res://.godot/imported/Aiozbrush-8Ov60.otf-6fa874ff7ca93f24d283dbf7b56390f0.fontdata"
+uid="uid://bo2hhumf6dhn3"
+path="res://.godot/imported/MangabeyRegular-rgqVO.otf-7f0519f2dd3010fee38e08a4d110809c.fontdata"
 
 [deps]
 
-source_file="res://fonts/Aiozbrush-8Ov60.otf"
-dest_files=["res://.godot/imported/Aiozbrush-8Ov60.otf-6fa874ff7ca93f24d283dbf7b56390f0.fontdata"]
+source_file="res://fonts/MangabeyRegular-rgqVO.otf"
+dest_files=["res://.godot/imported/MangabeyRegular-rgqVO.otf-7f0519f2dd3010fee38e08a4d110809c.fontdata"]
 
 [params]
 

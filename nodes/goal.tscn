@@ -1,31 +1,52 @@
 [gd_scene format=3 uid="uid://8irupc3xmvho"]
 
+[ext_resource type="Texture2D" uid="uid://csystmnjsf1pq" path="res://temp_button.png" id="1_7u34p"]
+[ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://nodes/goal_draw.gd" id="2_kalp8"]
+
 [node name="TextureRect" type="TextureRect" unique_id=110054324]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 410.0
+offset_bottom = 138.0
+texture = ExtResource("1_7u34p")
 
 [node name="Date" type="Label" parent="." unique_id=1016183440]
 layout_mode = 0
+offset_top = 56.0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "12/24/2008"
 
 [node name="Identifier" type="Label" parent="." unique_id=421251310]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 289.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "making money"
 
-[node name="Description" type="Label" parent="." unique_id=1403737377]
+[node name="Complete" type="TextureButton" parent="." unique_id=80878045]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 202.0
+offset_top = 62.0
+offset_right = 394.0
+offset_bottom = 126.0
+texture_normal = ExtResource("1_7u34p")
+script = ExtResource("2_kalp8")
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=80878045]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="TextureButton" unique_id=1486685357]
+[node name="Label" type="Label" parent="Complete" unique_id=1486685357]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "COMPLETE"
+
+[node name="Description" type="FoldableContainer" parent="." unique_id=572071310]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 168.0
+offset_bottom = 136.0
+folded = true
+
+[node name="Label" type="Label" parent="Description" unique_id=1403737377]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Want to be a bigshot"
