@@ -7,22 +7,14 @@
 [ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://nodes/goal_draw.gd" id="2_kalp8"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
 
-[node name="Control" type="Control" unique_id=267850266]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GoalButton" type="TextureRect" parent="." unique_id=1432972209]
+[node name="GoalButton" type="TextureRect" unique_id=110054324]
 custom_minimum_size = Vector2(512, 196)
-layout_mode = 0
 offset_right = 515.0
 offset_bottom = 236.0
 texture = ExtResource("1_u2tcs")
+expand_mode = 1
 
-[node name="Date" type="Label" parent="GoalButton" unique_id=1515507802]
+[node name="Date" type="Label" parent="." unique_id=1016183440]
 z_index = 2
 layout_mode = 0
 offset_left = 34.0
@@ -36,7 +28,7 @@ text = "Created: 12/24/2008"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Identifier" type="Label" parent="GoalButton" unique_id=1842168167]
+[node name="Identifier" type="Label" parent="." unique_id=421251310]
 z_index = 2
 custom_maximum_size = Vector2(430, 71)
 layout_mode = 0
@@ -53,7 +45,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Complete" type="TextureButton" parent="GoalButton" unique_id=110386689]
+[node name="Complete" type="TextureButton" parent="." unique_id=80878045]
 z_index = 2
 layout_mode = 0
 offset_left = 161.0
@@ -65,7 +57,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_kalp8")
 
-[node name="Label" type="Label" parent="GoalButton/Complete" unique_id=2065974962]
+[node name="Label" type="Label" parent="Complete" unique_id=1486685357]
 layout_mode = 0
 offset_top = 6.0
 offset_right = 197.0
@@ -76,7 +68,7 @@ text = "COMPLETE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="FoldableContainer" parent="GoalButton" unique_id=2002779128]
+[node name="Description" type="FoldableContainer" parent="." unique_id=572071310]
 z_index = 3
 layout_mode = 0
 offset_left = 29.0
@@ -87,8 +79,12 @@ theme_override_fonts/font = ExtResource("2_yweip")
 folded = true
 title = "DESCRIPTION"
 
-[node name="Label" type="Label" parent="GoalButton/Description" unique_id=208672481]
+[node name="Label" type="Label" parent="Description" unique_id=1403737377]
 visible = false
+custom_minimum_size = Vector2(463, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Want to be a bigshot"
+text = "Want to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshot"
+autowrap_mode = 3
+
+[connection signal="button_down" from="Complete" to="Complete" method="_on_button_down"]

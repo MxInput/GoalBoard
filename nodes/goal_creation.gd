@@ -19,7 +19,7 @@ var max_text_length := 300;
 func _on_text_edit_text_changed() -> void:
 	var new_text := desc_box.text;
 	
-	if (desc_box.text.length() > max_text_length):
+	if (new_text.length() > max_text_length):
 		desc_box.text = current_text;
 		
 		desc_box.set_caret_column(cursor_col);
@@ -47,13 +47,16 @@ func _on_create_button_down() -> void:
 		v_box.add_child(new_goal);
 		new_goal.find_child("Identifier").text = identifier_string;
 		new_goal.find_child("Description").get_child(0).text = desc_string;
-		
 		var found_date = Time.get_date_dict_from_system();
 		new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
 		
+		var goal_entry = UnfinishedGoal.new(identifier_string, desc_string, found_date);
+		new_goal.find_child("Complete").unfinished_good = goal_entry;
+			
+		MemberVariables.new_member.unfinished_goals.push_back(goal_entry);
 	else:
 		print("enter your goals")
 
 
-func _on_identifier_text_changed(new_text: String) -> void:
+func _on_identifier_text_changed(_new_text: String) -> void:
 	identifier_count.text = str(identifier_box.text.length()) + "/" + str(identifier_box.max_length);

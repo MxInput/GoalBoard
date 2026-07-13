@@ -8,7 +8,7 @@ var texture_size : Vector2i = Vector2i(512, 512);
 func _ready() -> void:
 	drawable_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, Color.WHITE)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var local_pos = get_local_mouse_position()
 		
