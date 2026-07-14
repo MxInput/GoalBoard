@@ -24,8 +24,13 @@ offset_right = 1605.0
 offset_bottom = 1367.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
+zoom = Vector2(0.4, 0.4)
 limit_left = -1149
 limit_top = -60
 limit_right = 1681
 limit_bottom = 1441
 script = ExtResource("1_k4sgw")
+
+[node name="Current" type="TextureRect" parent="." unique_id=1768887880]
+offset_right = 256.0
+offset_bottom = 256.0

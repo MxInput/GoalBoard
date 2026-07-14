@@ -7,16 +7,21 @@
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="5_13fdh"]
 [ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://bow_button.png" id="6_jy1x6"]
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://nodes/draw.gd" id="7_o74un"]
-[ext_resource type="Texture2D" uid="uid://rvisxhln4c20" path="res://icon.svg" id="8_jt0lk"]
 [ext_resource type="Script" uid="uid://bvwhhnvg5sabh" path="res://nodes/disappear_warning.gd" id="9_ewqsw"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_kc3a4"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jday5"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/brush_stroke.png-93321f4a05b9af1260fd54028be7cc71.ctex"
+
 [node name="Menu" type="Node" unique_id=1227418922]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1255491717]
+[node name="Container" type="Node2D" parent="." unique_id=1398429635]
 
-[node name="GoalCreation" type="Node" parent="." unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "v_box", "warning")]
+[node name="Camera2D" type="Camera2D" parent="Container" unique_id=1255491717]
+
+[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "v_box", "warning")]
 script = ExtResource("1_jday5")
 desc_box = NodePath("../CanvasLayer/TextEdit")
 desc_count = NodePath("../CanvasLayer/DescCount")
@@ -27,14 +32,14 @@ v_box = NodePath("../CanvasLayer/ScrollContainer/VBoxContainer")
 temp_goal = ExtResource("2_ewqsw")
 warning = NodePath("../CanvasLayer/Warning")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1076521952]
+[node name="CanvasLayer" type="CanvasLayer" parent="Container" unique_id=1076521952]
 
-[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1437988000]
+[node name="Background" type="TextureRect" parent="Container/CanvasLayer" unique_id=1437988000]
 offset_right = 1148.0
 offset_bottom = 654.0
 texture = ExtResource("3_fhr7y")
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer" unique_id=1853837774]
+[node name="TextEdit" type="TextEdit" parent="Container/CanvasLayer" unique_id=1853837774]
 offset_left = 618.0
 offset_top = 207.0
 offset_right = 1142.0
@@ -43,7 +48,7 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 placeholder_text = "Enter the description for your goal here."
 wrap_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=2109574580]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/CanvasLayer" unique_id=2109574580]
 offset_left = 28.0
 offset_top = 103.0
 offset_right = 551.0
@@ -51,17 +56,17 @@ offset_bottom = 578.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=294714044]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/CanvasLayer/ScrollContainer" unique_id=294714044]
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 40
 
-[node name="Space" type="Control" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1532540540]
+[node name="Space" type="Control" parent="Container/CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1532540540]
 custom_minimum_size = Vector2(512, 128)
 layout_mode = 2
 
-[node name="CreationTitle" type="RichTextLabel" parent="CanvasLayer" unique_id=816037086]
+[node name="CreationTitle" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=816037086]
 offset_left = 593.0
 offset_top = 5.0
 offset_right = 1139.0
@@ -74,7 +79,7 @@ text = "[wave] CREATE A NEW GOAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoalTitle" type="RichTextLabel" parent="CanvasLayer" unique_id=361505536]
+[node name="GoalTitle" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=361505536]
 offset_left = 15.0
 offset_top = 5.0
 offset_right = 561.0
@@ -87,7 +92,7 @@ text = "[wave] CREATED GOALS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DescCount" type="Label" parent="CanvasLayer" unique_id=1964320505]
+[node name="DescCount" type="Label" parent="Container/CanvasLayer" unique_id=1964320505]
 offset_left = 619.0
 offset_top = 472.0
 offset_right = 1143.0
@@ -98,7 +103,7 @@ text = "0/300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IdentifierCount" type="Label" parent="CanvasLayer" unique_id=45195213]
+[node name="IdentifierCount" type="Label" parent="Container/CanvasLayer" unique_id=45195213]
 offset_left = 626.0
 offset_top = 161.0
 offset_right = 1134.0
@@ -109,14 +114,14 @@ text = "0/50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Create" type="TextureButton" parent="CanvasLayer" unique_id=115747629]
+[node name="Create" type="TextureButton" parent="Container/CanvasLayer" unique_id=115747629]
 offset_left = 710.0
 offset_top = 506.0
 offset_right = 1066.0
 offset_bottom = 570.0
 texture_normal = ExtResource("6_jy1x6")
 
-[node name="Label" type="Label" parent="CanvasLayer/Create" unique_id=1379687930]
+[node name="Label" type="Label" parent="Container/CanvasLayer/Create" unique_id=1379687930]
 layout_mode = 0
 offset_right = 353.0
 offset_bottom = 52.0
@@ -127,7 +132,7 @@ text = "CREATE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Identifier" type="LineEdit" parent="CanvasLayer" unique_id=1682138002]
+[node name="Identifier" type="LineEdit" parent="Container/CanvasLayer" unique_id=1682138002]
 offset_left = 623.0
 offset_top = 119.0
 offset_right = 1139.0
@@ -136,21 +141,21 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 placeholder_text = "Enter an Identifier for this goal."
 max_length = 50
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=997116994]
+[node name="Button" type="Button" parent="Container/CanvasLayer" unique_id=997116994]
 offset_left = 13.0
 offset_top = 604.0
 offset_right = 179.0
 offset_bottom = 635.0
 text = "GO TO GOAL BOARD"
 
-[node name="DrawingTab" type="Control" parent="CanvasLayer" unique_id=519973302]
+[node name="DrawingTab" type="Control" parent="Container/CanvasLayer" unique_id=519973302]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Background" type="ColorRect" parent="CanvasLayer/DrawingTab" unique_id=1241924818]
+[node name="Background" type="ColorRect" parent="Container/CanvasLayer/DrawingTab" unique_id=1241924818]
 layout_mode = 0
 offset_left = 265.0
 offset_top = 60.0
@@ -158,7 +163,7 @@ offset_right = 836.0
 offset_bottom = 625.0
 color = Color(0.9098039, 0.41568628, 0.4509804, 1)
 
-[node name="Drawing" type="TextureRect" parent="CanvasLayer/DrawingTab" unique_id=321332911 node_paths=PackedStringArray("canvas_layer")]
+[node name="Drawing" type="TextureRect" parent="Container/CanvasLayer/DrawingTab" unique_id=321332911 node_paths=PackedStringArray("canvas_layer", "camera")]
 layout_mode = 0
 offset_left = 297.0
 offset_top = 87.0
@@ -167,10 +172,64 @@ offset_bottom = 151.0
 texture = SubResource("DrawableTexture2D_kc3a4")
 script = ExtResource("7_o74un")
 drawable_texture = SubResource("DrawableTexture2D_kc3a4")
-source_img = ExtResource("8_jt0lk")
+source_img = SubResource("CompressedTexture2D_jday5")
 canvas_layer = NodePath("../..")
+camera = NodePath("../../../Camera2D")
 
-[node name="Warning" type="Label" parent="CanvasLayer" unique_id=1136107858]
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/CanvasLayer/DrawingTab" unique_id=77510798]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 58.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_13fdh")
+theme_override_font_sizes/normal_font_size = 30
+text = "DRAW A REPRESENTATIVE IMAGE FOR THIS GOAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Finish" type="TextureButton" parent="Container/CanvasLayer/DrawingTab" unique_id=641397994]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 219.0
+offset_right = 1124.0
+offset_bottom = 283.0
+texture_normal = ExtResource("6_jy1x6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/DrawingTab/Finish" unique_id=23307682]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("5_13fdh")
+theme_override_font_sizes/font_size = 30
+text = "FINISH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clear" type="TextureButton" parent="Container/CanvasLayer/DrawingTab" unique_id=726540612]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 300.0
+offset_right = 1124.0
+offset_bottom = 364.0
+texture_normal = ExtResource("6_jy1x6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/DrawingTab/Clear" unique_id=852427389]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("5_13fdh")
+theme_override_font_sizes/font_size = 30
+text = "CLEAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Warning" type="Label" parent="Container/CanvasLayer" unique_id=1136107858]
 visible = false
 offset_left = 622.0
 offset_top = 587.0
@@ -184,6 +243,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_ewqsw")
 
-[connection signal="text_changed" from="CanvasLayer/TextEdit" to="GoalCreation" method="_on_text_edit_text_changed"]
-[connection signal="button_down" from="CanvasLayer/Create" to="GoalCreation" method="_on_create_button_down"]
-[connection signal="text_changed" from="CanvasLayer/Identifier" to="GoalCreation" method="_on_identifier_text_changed"]
+[connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
+[connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
+[connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
+[connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Clear" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_clear_button_down"]
