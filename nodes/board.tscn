@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b22nskl2gxpp1" path="res://scripts/move_image.gd" id="2_xy510"]
 [ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://images/goal_pink.png" id="4_f201g"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="5_8forb"]
+[ext_resource type="Script" uid="uid://bbw1wdmd02p4s" path="res://nodes/popup_handler.gd" id="5_8kn72"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="6_8kn72"]
 
 [node name="Board" type="Node" unique_id=1006576281]
@@ -47,6 +48,7 @@ limit_bottom = 1441
 script = ExtResource("1_k4sgw")
 
 [node name="Current" type="TextureRect" parent="Container" unique_id=1768887880 node_paths=PackedStringArray("popup")]
+visible = false
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 256.0
@@ -67,22 +69,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Popup" type="TextureRect" parent="Container" unique_id=338012953]
-visible = false
+z_index = 10
 layout_mode = 0
-offset_right = 512.0
-offset_bottom = 233.0
+offset_right = 882.0
+offset_bottom = 456.0
 texture = ExtResource("4_f201g")
+script = ExtResource("5_8kn72")
 
 [node name="DateCreated" type="Label" parent="Container/Popup" unique_id=1302098789]
 z_index = 2
 layout_mode = 0
-offset_left = 34.0
-offset_top = 134.0
-offset_right = 480.0
-offset_bottom = 166.0
+offset_left = 60.0
+offset_top = 221.0
+offset_right = 817.0
+offset_bottom = 281.0
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
 theme_override_fonts/font = ExtResource("5_8forb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 33
 text = "Created: 12/24/2008"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -90,30 +94,32 @@ vertical_alignment = 1
 [node name="DateCompleted" type="Label" parent="Container/Popup" unique_id=1273182215]
 z_index = 2
 layout_mode = 0
-offset_left = 34.0
-offset_top = 104.0
-offset_right = 480.0
-offset_bottom = 136.0
+offset_left = 63.0
+offset_top = 179.0
+offset_right = 815.0
+offset_bottom = 228.0
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
 theme_override_fonts/font = ExtResource("5_8forb")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 33
 text = "Completed: 12/24/2008"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Identifier" type="Label" parent="Container/Popup" unique_id=766917033]
 z_index = 2
-custom_maximum_size = Vector2(430, 71)
+custom_maximum_size = Vector2(750, 150)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 34.0
-offset_right = 470.0
-offset_bottom = 102.0
+offset_left = 62.0
+offset_top = 55.0
+offset_right = 812.0
+offset_bottom = 205.0
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6117647)
 theme_override_fonts/font = ExtResource("6_8kn72")
-theme_override_font_sizes/font_size = 18
-text = "Making money"
+theme_override_font_sizes/font_size = 49
+text = "IDENTIFIER"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -121,11 +127,13 @@ autowrap_mode = 3
 [node name="Description" type="FoldableContainer" parent="Container/Popup" unique_id=2145058583]
 z_index = 3
 layout_mode = 0
-offset_left = 29.0
-offset_top = 188.0
-offset_right = 492.0
-offset_bottom = 273.0
+offset_left = 10.0
+offset_top = 307.0
+offset_right = 876.0
+offset_bottom = 430.0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("5_8forb")
+theme_override_font_sizes/font_size = 50
 folded = true
 title = "DESCRIPTION"
 
@@ -134,9 +142,12 @@ visible = false
 custom_minimum_size = Vector2(463, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
 text = "Want to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshot"
 autowrap_mode = 3
 
 [connection signal="mouse_entered" from="Container/Current" to="Container/Current" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/Current" to="Container/Current" method="_on_mouse_exited"]
 [connection signal="button_down" from="Container/Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Container/Popup" to="Container/Popup" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Container/Popup" to="Container/Popup" method="_on_mouse_exited"]
