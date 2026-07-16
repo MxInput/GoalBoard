@@ -2,7 +2,7 @@ extends TextureButton
 
 var unfinished_goal : UnfinishedGoal;
 
-signal activate_draw(selected_go);
+signal activate_draw(selected_goal);
 
 func _ready() -> void:
 	var canvas_layer = get_node("/root/Menu/Container/CanvasLayer");

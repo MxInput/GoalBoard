@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="2_iy113"]
 [ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://scripts/goal_draw.gd" id="2_kalp8"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
+[ext_resource type="Script" uid="uid://cbjaau5wchqbn" path="res://nodes/delete_goal.gd" id="7_a61ah"]
 
 [node name="GoalButton" type="TextureRect" unique_id=110054324]
 custom_minimum_size = Vector2(512, 236)
@@ -47,9 +48,9 @@ autowrap_mode = 3
 [node name="Complete" type="TextureButton" parent="." unique_id=80878045]
 z_index = 2
 layout_mode = 0
-offset_left = 161.0
+offset_left = 47.0
 offset_top = 133.0
-offset_right = 361.0
+offset_right = 247.0
 offset_bottom = 186.0
 texture_normal = ExtResource("1_3mf0w")
 ignore_texture_size = true
@@ -64,6 +65,29 @@ offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_iy113")
 theme_override_font_sizes/font_size = 24
 text = "COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Delete" type="TextureButton" parent="." unique_id=1246495154]
+z_index = 2
+layout_mode = 0
+offset_left = 261.0
+offset_top = 133.0
+offset_right = 461.0
+offset_bottom = 186.0
+texture_normal = ExtResource("1_3mf0w")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_a61ah")
+
+[node name="Label" type="Label" parent="Delete" unique_id=1818710000]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 197.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_iy113")
+theme_override_font_sizes/font_size = 24
+text = "DELETE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -87,3 +111,4 @@ text = "Want to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a
 autowrap_mode = 3
 
 [connection signal="button_down" from="Complete" to="Complete" method="_on_button_down"]
+[connection signal="button_down" from="Delete" to="Delete" method="_on_button_down"]

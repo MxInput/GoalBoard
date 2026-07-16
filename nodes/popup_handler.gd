@@ -1,13 +1,33 @@
 extends TextureRect
 
 var current_image;
+var saved_image;
 @export var hovering := false;
-@export var active := false;
 
-func _on_mouse_entered() -> void:
-	print("entered")
-	hovering = true;
+func _process(_delta: float) -> void:
+	var upper_limit = global_position.y;
+	var lower_limit = global_position.y + size.y;
+	var left_limit = global_position.x;
+	var right_limit = global_position.x + size.x;
 	
-func _on_mouse_exited() -> void:
-	print("exit")
-	hovering = false;
+	var mouse_pos := get_global_mouse_position();
+	
+	if mouse_pos.y >= upper_limit && mouse_pos.y <= lower_limit:
+		if mouse_pos.x >= left_limit && mouse_pos.x <= right_limit:
+			hovering = true;
+		else:
+			if (current_image == null):
+				visible = false;
+			hovering = false;
+	else:
+		if (current_image == null):
+			visible = false;
+		hovering = false;
+
+func _on_delete_button_down() -> void:
+	print(saved_image)
+	if (saved_image != null):
+		visible = false;
+		
+		MemberVariables.new_member.completed_goals.remove_at(MemberVariables.new_member.completed_goals.find(saved_image.completed_goal));
+		saved_image.queue_free();

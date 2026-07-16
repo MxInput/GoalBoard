@@ -55,10 +55,14 @@ func _on_create_button_down() -> void:
 		
 		var goal_entry = UnfinishedGoal.new(identifier_string, desc_string, found_date);
 		new_goal.find_child("Complete").unfinished_goal = goal_entry;
-			
+		new_goal.find_child("Delete").unfinished_goal = goal_entry;
+		
 		MemberVariables.new_member.unfinished_goals.push_back(goal_entry);
 	else:
 		warning.visible = true;
 
 func _on_identifier_text_changed(_new_text: String) -> void:
 	identifier_count.text = str(identifier_box.text.length()) + "/" + str(identifier_box.max_length);
+
+func delete_goal(selected_goal : UnfinishedGoal) -> void:
+	MemberVariables.new_member.unfinished_goals.remove_at(MemberVariables.new_member.unfinished_goals.find(selected_goal));

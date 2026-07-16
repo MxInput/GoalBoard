@@ -9,12 +9,11 @@ var showing_image = false;
 @export var popup : TextureRect;
 
 func _input(event: InputEvent) -> void:
-	if event.is_action("left_click"):
-		if (holding):
+	if event.is_action_pressed("left_click"):
+		if (!popup.hovering):
+			holding = true;
+	elif event.is_action_released("left_click"): 
 			holding = false;
-		else:
-			if (!popup.hovering):
-				holding = true;
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position();
@@ -27,13 +26,14 @@ func _process(delta: float) -> void:
 	elif (showing_image):
 		popup.visible = true;
 		
-		popup.position = self.position - Vector2(0, size.y/2);
+		popup.position = self.position - Vector2(size.x/2, size.y/2);
 
 func _on_mouse_entered() -> void:
 	hovering = true;
 	
 	if (hovering && !holding):
 		popup.current_image = self;
+		popup.saved_image = self;
 	
 		popup.find_child("DateCreated").text = "Created: " + str(completed_goal.date_created["month"]) + "/" + str(completed_goal.date_created["day"]) + "/" + str(completed_goal.date_created["year"]);
 		popup.find_child("DateCompleted").text = "Completed: " + str(completed_goal.date_completed["month"]) + "/" + str(completed_goal.date_completed["day"]) + "/" + str(completed_goal.date_completed["year"]);
@@ -49,8 +49,14 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	hovering = false;
 	
-	if (popup.current_image == self):
+	if (popup.current_image == self && !popup.hovering):
 		popup.current_image = null;
 		popup.visible = false;
 		
 		showing_image = false;
+	elif (popup.hovering):
+		popup.current_image = null;
+		
+		showing_image = false;
+	elif (popup.saved_image == self):
+		popup.saved_image = null;

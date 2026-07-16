@@ -141,7 +141,7 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 placeholder_text = "Enter an Identifier for this goal."
 max_length = 50
 
-[node name="Button" type="Button" parent="Container/CanvasLayer" unique_id=997116994]
+[node name="Board" type="Button" parent="Container/CanvasLayer" unique_id=997116994]
 offset_left = 13.0
 offset_top = 604.0
 offset_right = 179.0
@@ -246,5 +246,6 @@ script = ExtResource("9_ewqsw")
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
 [connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
+[connection signal="button_down" from="Container/CanvasLayer/Board" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Clear" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_clear_button_down"]

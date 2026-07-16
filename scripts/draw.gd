@@ -63,3 +63,16 @@ func _on_finish_button_down() -> void:
 	MemberVariables.new_member.completed_goals.push_back(CompletedGoal.new(current_goal.identifier, current_goal.description, current_goal.date, Time.get_datetime_dict_from_system(), ImageTexture.create_from_image(drawable_texture.get_image()), Vector2(0,0)));
 		
 	drawable_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8);
+
+func _on_board_button_down() -> void:
+	var container = get_node("/root/Menu/Container");
+	container.visible = false;
+	canvas_layer.visible = false;
+	
+	if (board == null):
+		board = preload("res://nodes/board.tscn").instantiate();
+		get_tree().root.add_child(board);
+	else:
+		board.get_child(0).visible = true;
+		
+	board.find_child("Camera2D").make_current();

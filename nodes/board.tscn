@@ -7,6 +7,12 @@
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="5_8forb"]
 [ext_resource type="Script" uid="uid://bbw1wdmd02p4s" path="res://nodes/popup_handler.gd" id="5_8kn72"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="6_8kn72"]
+[ext_resource type="Texture2D" uid="uid://dcgxh88lftqub" path="res://images/down_arrow.png" id="8_gmacq"]
+[ext_resource type="Texture2D" uid="uid://bn3bxon5i82e8" path="res://images/up_arrow.png" id="9_515wt"]
+[ext_resource type="Texture2D" uid="uid://cndl2em1yabag" path="res://images/left_arrow.png" id="10_7fvmb"]
+[ext_resource type="Texture2D" uid="uid://detaa54s7sm8h" path="res://images/right_arrow.png" id="11_o1d5c"]
+[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/bow_button.png" id="12_515wt"]
+[ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="13_7fvmb"]
 
 [node name="Board" type="Node" unique_id=1006576281]
 script = ExtResource("1_inolc")
@@ -55,12 +61,14 @@ offset_bottom = 256.0
 script = ExtResource("2_xy510")
 popup = NodePath("../Popup")
 
-[node name="Button" type="Button" parent="Container" unique_id=1478287858]
+[node name="Return" type="Button" parent="Container" unique_id=1478287858]
 layout_mode = 0
-offset_left = -1032.0
-offset_top = 1311.0
-offset_right = -954.0
-offset_bottom = 1342.0
+offset_left = -1064.0
+offset_top = 1282.0
+offset_right = -765.0
+offset_bottom = 1359.0
+theme_override_fonts/font = ExtResource("5_8forb")
+theme_override_font_sizes/font_size = 40
 text = "GO BACK"
 
 [node name="Details" type="TextureRect" parent="Container" unique_id=1211002572]
@@ -127,13 +135,17 @@ autowrap_mode = 3
 [node name="Description" type="FoldableContainer" parent="Container/Popup" unique_id=2145058583]
 z_index = 3
 layout_mode = 0
-offset_left = 10.0
-offset_top = 307.0
-offset_right = 876.0
-offset_bottom = 430.0
+offset_left = 24.0
+offset_top = 359.0
+offset_right = 856.0
+offset_bottom = 482.0
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("5_8forb")
 theme_override_font_sizes/font_size = 50
+theme_override_icons/expanded_arrow = ExtResource("8_gmacq")
+theme_override_icons/expanded_arrow_mirrored = ExtResource("9_515wt")
+theme_override_icons/folded_arrow = ExtResource("10_7fvmb")
+theme_override_icons/folded_arrow_mirrored = ExtResource("11_o1d5c")
 folded = true
 title = "DESCRIPTION"
 
@@ -146,8 +158,35 @@ theme_override_font_sizes/font_size = 30
 text = "Want to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshot"
 autowrap_mode = 3
 
+[node name="TextureRect" type="TextureRect" parent="Container/Popup" unique_id=90642839]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 319.0
+offset_right = 45.0
+offset_bottom = 359.0
+
+[node name="Delete" type="TextureButton" parent="Container/Popup" unique_id=1915028629]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 283.0
+offset_right = 620.0
+offset_bottom = 347.0
+texture_normal = ExtResource("12_515wt")
+
+[node name="Label" type="Label" parent="Container/Popup/Delete" unique_id=1517345820]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 353.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("13_7fvmb")
+theme_override_font_sizes/font_size = 30
+text = "DELETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="Container/Current" to="Container/Current" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/Current" to="Container/Current" method="_on_mouse_exited"]
-[connection signal="button_down" from="Container/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Container/Return" to="." method="_on_button_button_down"]
 [connection signal="mouse_entered" from="Container/Popup" to="Container/Popup" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/Popup" to="Container/Popup" method="_on_mouse_exited"]
+[connection signal="button_down" from="Container/Popup/Delete" to="Container/Popup" method="_on_delete_button_down"]
