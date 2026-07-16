@@ -35,7 +35,7 @@ func _on_text_edit_text_changed() -> void:
 
 
 func _on_create_button_down() -> void:
-	if (desc_box.text.length() > 0):
+	if (desc_box.text.length() > 0 && identifier_box.text.length() > 0):
 		var desc_string = desc_box.text;
 		var identifier_string = identifier_box.text;
 		

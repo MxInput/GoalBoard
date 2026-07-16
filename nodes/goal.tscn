@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://8irupc3xmvho"]
 
-[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://bow_button.png" id="1_3mf0w"]
-[ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://goal_pink.png" id="1_u2tcs"]
+[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/bow_button.png" id="1_3mf0w"]
+[ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://images/goal_pink.png" id="1_u2tcs"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="2_3mf0w"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="2_iy113"]
-[ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://nodes/goal_draw.gd" id="2_kalp8"]
+[ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://scripts/goal_draw.gd" id="2_kalp8"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
 
 [node name="GoalButton" type="TextureRect" unique_id=110054324]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b52ijj6tvk7hc"
-path="res://.godot/imported/bow_bg.png-15be5fa75608f8ca3934bda2905b3250.ctex"
+uid="uid://beswvk1cbeqke"
+path="res://.godot/imported/sun_button.png-446df126ed464b41954c8ae4ae5b39af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bow_bg.png"
-dest_files=["res://.godot/imported/bow_bg.png-15be5fa75608f8ca3934bda2905b3250.ctex"]
+source_file="res://images/sun_button.png"
+dest_files=["res://.godot/imported/sun_button.png-446df126ed464b41954c8ae4ae5b39af.ctex"]
 
 [params]
 

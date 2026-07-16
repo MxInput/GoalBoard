@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beswvk1cbeqke"
-path="res://.godot/imported/sun_button.png-a64f3fe366a4fb2953bd4cf426b569e3.ctex"
+uid="uid://csystmnjsf1pq"
+path="res://.godot/imported/temp_button.png-397eca30e09344f1b44c62718c1abf68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sun_button.png"
-dest_files=["res://.godot/imported/sun_button.png-a64f3fe366a4fb2953bd4cf426b569e3.ctex"]
+source_file="res://images/temp_button.png"
+dest_files=["res://.godot/imported/temp_button.png-397eca30e09344f1b44c62718c1abf68.ctex"]
 
 [params]
 
