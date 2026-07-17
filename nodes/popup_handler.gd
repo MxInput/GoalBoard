@@ -25,9 +25,9 @@ func _process(_delta: float) -> void:
 		hovering = false;
 
 func _on_delete_button_down() -> void:
-	print(saved_image)
 	if (saved_image != null):
 		visible = false;
 		
 		MemberVariables.new_member.completed_goals.remove_at(MemberVariables.new_member.completed_goals.find(saved_image.completed_goal));
 		saved_image.queue_free();
+		MemberVariables.write_save();

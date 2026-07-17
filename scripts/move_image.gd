@@ -15,12 +15,12 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("left_click"): 
 			holding = false;
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mouse_pos = get_global_mouse_position();
 	
 	if (holding && hovering):
 		position = mouse_pos - Vector2(size.x / 2, size.y/2);
-		
+			
 	if (holding):
 		popup.visible = false;
 	elif (showing_image):

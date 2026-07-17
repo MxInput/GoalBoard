@@ -34,6 +34,7 @@ func start_drawing(unfinished_goal : UnfinishedGoal) -> void:
 	
 	get_parent().visible = true;
 	current_goal = unfinished_goal;
+	print(unfinished_goal)
 	
 	disappear_goal_menu();
 
@@ -57,11 +58,22 @@ func _on_finish_button_down() -> void:
 	board.get_child(0).add_child(new_board_drawing);
 	new_board_drawing.texture = ImageTexture.create_from_image(drawable_texture.get_image());
 	new_board_drawing.visible = true;
-	new_board_drawing.completed_goal = CompletedGoal.new(current_goal.identifier, current_goal.description, current_goal.date, Time.get_datetime_dict_from_system(), ImageTexture.create_from_image(drawable_texture.get_image()), Vector2(0,0));
+	var new_completed_goal := CompletedGoal.new();
+	
+	new_completed_goal.identifier = current_goal.identifier;
+	new_completed_goal.description = current_goal.description;
+	new_completed_goal.date_created = current_goal.date;
+	new_completed_goal.date_completed = Time.get_datetime_dict_from_system();
+	new_completed_goal.drawn_texture = ImageTexture.create_from_image(drawable_texture.get_image());
+	new_completed_goal.saved_pos = Vector2(0,0);
+	
+	new_board_drawing.completed_goal = new_completed_goal;
 	
 	MemberVariables.new_member.unfinished_goals.remove_at(MemberVariables.new_member.unfinished_goals.find(current_goal));
-	MemberVariables.new_member.completed_goals.push_back(CompletedGoal.new(current_goal.identifier, current_goal.description, current_goal.date, Time.get_datetime_dict_from_system(), ImageTexture.create_from_image(drawable_texture.get_image()), Vector2(0,0)));
-		
+	MemberVariables.new_member.completed_goals.push_back(new_completed_goal);
+	
+	MemberVariables.write_save();
+	
 	drawable_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8);
 
 func _on_board_button_down() -> void:

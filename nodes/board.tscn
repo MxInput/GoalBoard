@@ -153,31 +153,28 @@ title = "DESCRIPTION"
 visible = false
 custom_minimum_size = Vector2(463, 0)
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Want to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshotWant to be a bigshot"
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="Container/Popup" unique_id=90642839]
+[node name="Delete" type="TextureButton" parent="Container/Popup" unique_id=1981790166]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 319.0
-offset_right = 45.0
-offset_bottom = 359.0
-
-[node name="Delete" type="TextureButton" parent="Container/Popup" unique_id=1915028629]
-layout_mode = 0
-offset_left = 264.0
-offset_top = 283.0
-offset_right = 620.0
-offset_bottom = 347.0
+offset_left = 61.0
+offset_top = 285.0
+offset_right = 260.0
+offset_bottom = 349.0
 texture_normal = ExtResource("12_515wt")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="Container/Popup/Delete" unique_id=1517345820]
+[node name="Label" type="Label" parent="Container/Popup/Delete" unique_id=1019983849]
 layout_mode = 0
 offset_top = 6.0
-offset_right = 353.0
+offset_right = 196.0
 offset_bottom = 55.0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("13_7fvmb")
 theme_override_font_sizes/font_size = 30
 text = "DELETE"
