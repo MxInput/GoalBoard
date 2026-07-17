@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn3bxon5i82e8"
-path="res://.godot/imported/up_arrow.png-bc51851779ea289d712182d501cf7a88.ctex"
+uid="uid://bq0ewcqbq8fk1"
+path="res://.godot/imported/sunflower_bg.png-073f716437593f81d06f2be2e7ed4bea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/up_arrow.png"
-dest_files=["res://.godot/imported/up_arrow.png-bc51851779ea289d712182d501cf7a88.ctex"]
+source_file="res://images/backgrounds/sunflower_bg.png"
+dest_files=["res://.godot/imported/sunflower_bg.png-073f716437593f81d06f2be2e7ed4bea.ctex"]
 
 [params]
 

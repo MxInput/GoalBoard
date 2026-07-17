@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crkrawtdfd52a"
-path="res://.godot/imported/bow_button.png-04e98dbc8bef276a78d99b52361ac3e4.ctex"
+uid="uid://cndl2em1yabag"
+path="res://.godot/imported/left_arrow.png-56b8c156021541d82de26922063d0eed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/bow_button.png"
-dest_files=["res://.godot/imported/bow_button.png-04e98dbc8bef276a78d99b52361ac3e4.ctex"]
+source_file="res://images/arrows/left_arrow.png"
+dest_files=["res://.godot/imported/left_arrow.png-56b8c156021541d82de26922063d0eed.ctex"]
 
 [params]
 

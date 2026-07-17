@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cndl2em1yabag"
-path="res://.godot/imported/left_arrow.png-b083fe9081671b09a512c549357e8c9e.ctex"
+uid="uid://beswvk1cbeqke"
+path="res://.godot/imported/sun_button.png-4b7b3f42dce4d389fd3f3d84f0dd31ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/left_arrow.png"
-dest_files=["res://.godot/imported/left_arrow.png-b083fe9081671b09a512c549357e8c9e.ctex"]
+source_file="res://images/buttons/sun_button.png"
+dest_files=["res://.godot/imported/sun_button.png-4b7b3f42dce4d389fd3f3d84f0dd31ac.ctex"]
 
 [params]
 
