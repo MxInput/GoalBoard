@@ -5,11 +5,13 @@
 A simple app made in Godot to test it's ability to make desktop applications along with try out its drawabletexture feature.
 
 ## Features
-- Saves goals
-- Enter in unfinished goals
+- Saves finished and unfinished goals (but not their position on the board).
+- Enter unfinished goals into a list.
 - Finish goals by drawing a representation of them and then position them on your board.
 
 ## Controls
   While on the board use Q and E to zoom in and out. Use WASD or the arrow keys to navigate.
+
+  Move images on the board by holding the left mouse button and dragging them to your desired location.
 
   
