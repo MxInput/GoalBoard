@@ -3,6 +3,7 @@ extends Node
 const SAVE_PATH := "user://member.tres"
 
 var new_member : Member;
+var month_order = false;
 
 func _ready() -> void:
 	if ResourceLoader.exists(SAVE_PATH):

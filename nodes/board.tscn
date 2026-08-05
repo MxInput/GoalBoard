@@ -61,6 +61,9 @@ offset_bottom = 256.0
 script = ExtResource("2_xy510")
 popup = NodePath("../Popup")
 
+[node name="FinishMove" type="Timer" parent="Container/Current" unique_id=2058257286]
+wait_time = 3.0
+
 [node name="Return" type="Button" parent="Container" unique_id=1478287858]
 layout_mode = 0
 offset_left = -1064.0
@@ -183,6 +186,7 @@ vertical_alignment = 1
 
 [connection signal="mouse_entered" from="Container/Current" to="Container/Current" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/Current" to="Container/Current" method="_on_mouse_exited"]
+[connection signal="timeout" from="Container/Current/FinishMove" to="Container/Current" method="_on_finish_move_timeout"]
 [connection signal="button_down" from="Container/Return" to="." method="_on_button_button_down"]
 [connection signal="mouse_entered" from="Container/Popup" to="Container/Popup" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Container/Popup" to="Container/Popup" method="_on_mouse_exited"]

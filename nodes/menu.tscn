@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/buttons/bow_button.png" id="6_jy1x6"]
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://scripts/draw.gd" id="7_o74un"]
 [ext_resource type="Script" uid="uid://bvwhhnvg5sabh" path="res://scripts/disappear_warning.gd" id="9_ewqsw"]
+[ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="9_fhr7y"]
+[ext_resource type="Script" uid="uid://b7ujogcbp07vf" path="res://nodes/date_manager.gd" id="10_fhr7y"]
+[ext_resource type="Script" uid="uid://b7h7kgifm3702" path="res://nodes/settings_manager.gd" id="11_2l3r8"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_kc3a4"]
 
@@ -148,6 +151,13 @@ offset_right = 179.0
 offset_bottom = 635.0
 text = "GO TO GOAL BOARD"
 
+[node name="Settings" type="Button" parent="Container/CanvasLayer" unique_id=70727324]
+offset_left = 193.0
+offset_top = 604.0
+offset_right = 359.0
+offset_bottom = 635.0
+text = "SETTINGS"
+
 [node name="DrawingTab" type="Control" parent="Container/CanvasLayer" unique_id=519973302]
 visible = false
 layout_mode = 3
@@ -243,11 +253,32 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_ewqsw")
 
+[node name="DateTime" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=1654690087]
+offset_right = 398.0
+offset_bottom = 33.0
+theme_override_colors/default_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
+theme_override_colors/font_shadow_color = Color(0.56078434, 0.16470589, 0.1882353, 1)
+theme_override_fonts/normal_font = ExtResource("9_fhr7y")
+theme_override_font_sizes/normal_font_size = 22
+text = "11/22/2013 12:13:37"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SaveManager" type="Node" parent="." unique_id=1447543356]
+
+[node name="DateManager" type="Node" parent="." unique_id=548806606 node_paths=PackedStringArray("date_time_teller")]
+script = ExtResource("10_fhr7y")
+date_time_teller = NodePath("../Container/CanvasLayer/DateTime")
+
+[node name="SettingsManager" type="Node" parent="." unique_id=1689479507 node_paths=PackedStringArray("canvas_layer", "container")]
+script = ExtResource("11_2l3r8")
+canvas_layer = NodePath("../Container/CanvasLayer")
+container = NodePath("../Container")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
 [connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Board" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/Settings" to="SettingsManager" method="_on_settings_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Clear" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_clear_button_down"]

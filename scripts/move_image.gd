@@ -8,6 +8,8 @@ var showing_image = false;
 
 @export var popup : TextureRect;
 
+var finished_move_timer : Timer;
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		if (!popup.hovering):
@@ -15,12 +17,16 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("left_click"): 
 			holding = false;
 
+func _ready() -> void:
+	finished_move_timer = get_child(0);
+	
 func _process(_delta: float) -> void:
 	var mouse_pos = get_global_mouse_position();
 	
 	if (holding && hovering):
 		position = mouse_pos - Vector2(size.x / 2, size.y/2);
-			
+		finished_move_timer.start();	
+		
 	if (holding):
 		popup.visible = false;
 	elif (showing_image):
@@ -60,3 +66,11 @@ func _on_mouse_exited() -> void:
 		showing_image = false;
 	elif (popup.saved_image == self):
 		popup.saved_image = null;
+
+func _on_finish_move_timeout() -> void:
+	var found_goal_index = MemberVariables.new_member.completed_goals.find(completed_goal);
+	var found_goal = MemberVariables.new_member.completed_goals.get(found_goal_index);
+	
+	found_goal.saved_pos = position;
+	
+	MemberVariables.write_save();

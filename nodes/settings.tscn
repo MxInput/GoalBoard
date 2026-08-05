@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b34tbdj6sgtwh"]
+
+[ext_resource type="Script" uid="uid://bp8ktmmsw85fq" path="res://nodes/settings.gd" id="1_7fp5a"]
+[ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="4_ycvvs"]
+
+[node name="Settings" type="Node" unique_id=1006576281]
+script = ExtResource("1_7fp5a")
+
+[node name="Container" type="Control" parent="." unique_id=701028031]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Container" unique_id=151846489]
+layout_mode = 0
+offset_left = -1996.0
+offset_top = -747.0
+offset_right = 3388.0
+offset_bottom = 2414.0
+color = Color(0.9986002, 0.8335006, 0.9089892, 1)
+
+[node name="Camera2D" type="Camera2D" parent="Container" unique_id=1915878989]
+zoom = Vector2(0.4, 0.4)
+limit_left = -1149
+limit_top = -60
+limit_right = 1681
+limit_bottom = 1441
+
+[node name="Return" type="Button" parent="Container" unique_id=1478287858]
+layout_mode = 0
+offset_left = -1064.0
+offset_top = 1282.0
+offset_right = -765.0
+offset_bottom = 1359.0
+theme_override_fonts/font = ExtResource("4_ycvvs")
+theme_override_font_sizes/font_size = 40
+text = "GO BACK"
+
+[connection signal="button_down" from="Container/Return" to="." method="_on_return_button_down"]

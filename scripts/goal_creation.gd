@@ -26,7 +26,7 @@ func _ready() -> void:
 			v_box.move_child(v_box.find_child("Space"), -1);
 			new_goal.find_child("Identifier").text = unfinished_goal.identifier;
 			new_goal.find_child("Description").get_child(0).text = unfinished_goal.description;
-			var found_date = Time.get_date_dict_from_system();
+			var found_date = unfinished_goal.date;
 			new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
 			new_goal.find_child("Complete").unfinished_goal = unfinished_goal;
 			new_goal.find_child("Delete").unfinished_goal = unfinished_goal;
