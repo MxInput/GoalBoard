@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://b34tbdj6sgtwh"]
 
-[ext_resource type="Script" uid="uid://bp8ktmmsw85fq" path="res://nodes/settings.gd" id="1_7fp5a"]
+[ext_resource type="Script" uid="uid://bp8ktmmsw85fq" path="res://scripts/settings.gd" id="1_7fp5a"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="4_ycvvs"]
 
-[node name="Settings" type="Node" unique_id=1006576281]
+[sub_resource type="ButtonGroup" id="ButtonGroup_kc3a4"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_7fp5a"]
+
+[node name="Settings" type="Node" unique_id=1006576281 node_paths=PackedStringArray("month_first", "day_first", "year_first", "hr_24", "hr_12")]
 script = ExtResource("1_7fp5a")
+month_first = NodePath("Container/MonthFirst")
+day_first = NodePath("Container/DayFirst")
+year_first = NodePath("Container/YearFirst")
+hr_24 = NodePath("Container/24Hour")
+hr_12 = NodePath("Container/12Hour")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
+zoom = Vector2(0.4, 0.4)
+limit_left = -1149
+limit_top = -60
+limit_right = 1681
+limit_bottom = 1441
 
 [node name="Container" type="Control" parent="." unique_id=701028031]
 layout_mode = 3
@@ -20,13 +36,6 @@ offset_right = 3388.0
 offset_bottom = 2414.0
 color = Color(0.9986002, 0.8335006, 0.9089892, 1)
 
-[node name="Camera2D" type="Camera2D" parent="Container" unique_id=1915878989]
-zoom = Vector2(0.4, 0.4)
-limit_left = -1149
-limit_top = -60
-limit_right = 1681
-limit_bottom = 1441
-
 [node name="Return" type="Button" parent="Container" unique_id=1478287858]
 layout_mode = 0
 offset_left = -1064.0
@@ -37,4 +46,68 @@ theme_override_fonts/font = ExtResource("4_ycvvs")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
 
+[node name="MonthFirst" type="CheckBox" parent="Container" unique_id=1210992088]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 121.0
+offset_right = -112.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0.79734725, 0.00026760699, 0.7365079, 1)
+theme_override_font_sizes/font_size = 80
+button_pressed = true
+button_mask = 5
+button_group = SubResource("ButtonGroup_kc3a4")
+text = "MM-DD-YYYY"
+
+[node name="DayFirst" type="CheckBox" parent="Container" unique_id=1253713995]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 238.0
+offset_right = -112.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.79734725, 0.00026760699, 0.7365079, 1)
+theme_override_font_sizes/font_size = 80
+button_group = SubResource("ButtonGroup_kc3a4")
+text = "DD-MM-YYYY"
+
+[node name="YearFirst" type="CheckBox" parent="Container" unique_id=1782023801]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 344.0
+offset_right = -384.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0.79734725, 0.00026760699, 0.7365079, 1)
+theme_override_font_sizes/font_size = 80
+button_group = SubResource("ButtonGroup_kc3a4")
+text = "YYYY-MM-DD"
+
+[node name="24Hour" type="CheckBox" parent="Container" unique_id=589793532]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 528.0
+offset_right = -112.0
+offset_bottom = 646.0
+theme_override_colors/font_color = Color(0.79734725, 0.00026760699, 0.7365079, 1)
+theme_override_font_sizes/font_size = 80
+button_pressed = true
+button_mask = 5
+button_group = SubResource("ButtonGroup_7fp5a")
+text = "24 Hour Clock"
+
+[node name="12Hour" type="CheckBox" parent="Container" unique_id=700440827]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 645.0
+offset_right = -112.0
+offset_bottom = 763.0
+theme_override_colors/font_color = Color(0.79734725, 0.00026760699, 0.7365079, 1)
+theme_override_font_sizes/font_size = 80
+button_group = SubResource("ButtonGroup_7fp5a")
+text = "12 Hour Clock"
+
 [connection signal="button_down" from="Container/Return" to="." method="_on_return_button_down"]
+[connection signal="button_down" from="Container/MonthFirst" to="." method="_on_month_first_button_down"]
+[connection signal="button_down" from="Container/DayFirst" to="." method="_on_day_first_button_down"]
+[connection signal="button_down" from="Container/YearFirst" to="." method="_on_year_first_button_down"]
+[connection signal="button_down" from="Container/24Hour" to="." method="_on_hour_24_button_down"]
+[connection signal="button_down" from="Container/12Hour" to="." method="_on_hour_12_button_down"]

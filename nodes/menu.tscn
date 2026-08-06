@@ -9,8 +9,9 @@
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://scripts/draw.gd" id="7_o74un"]
 [ext_resource type="Script" uid="uid://bvwhhnvg5sabh" path="res://scripts/disappear_warning.gd" id="9_ewqsw"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="9_fhr7y"]
-[ext_resource type="Script" uid="uid://b7ujogcbp07vf" path="res://nodes/date_manager.gd" id="10_fhr7y"]
-[ext_resource type="Script" uid="uid://b7h7kgifm3702" path="res://nodes/settings_manager.gd" id="11_2l3r8"]
+[ext_resource type="Script" uid="uid://b7ujogcbp07vf" path="res://scripts/date_manager.gd" id="10_fhr7y"]
+[ext_resource type="Script" uid="uid://b7h7kgifm3702" path="res://scripts/settings_manager.gd" id="11_2l3r8"]
+[ext_resource type="PackedScene" uid="uid://b34tbdj6sgtwh" path="res://nodes/settings.tscn" id="12_13fdh"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_kc3a4"]
 
@@ -173,7 +174,7 @@ offset_right = 836.0
 offset_bottom = 625.0
 color = Color(0.9098039, 0.41568628, 0.4509804, 1)
 
-[node name="Drawing" type="TextureRect" parent="Container/CanvasLayer/DrawingTab" unique_id=321332911 node_paths=PackedStringArray("canvas_layer", "camera")]
+[node name="Drawing" type="TextureRect" parent="Container/CanvasLayer/DrawingTab" unique_id=321332911 node_paths=PackedStringArray("canvas_layer", "camera", "eraser_button", "size_button")]
 layout_mode = 0
 offset_left = 297.0
 offset_top = 87.0
@@ -185,8 +186,10 @@ drawable_texture = SubResource("DrawableTexture2D_kc3a4")
 source_img = SubResource("CompressedTexture2D_jday5")
 canvas_layer = NodePath("../..")
 camera = NodePath("../../../Camera2D")
+eraser_button = NodePath("../Eraser")
+size_button = NodePath("../Size")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/CanvasLayer/DrawingTab" unique_id=77510798]
+[node name="Description" type="RichTextLabel" parent="Container/CanvasLayer/DrawingTab" unique_id=77510798]
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 58.0
@@ -215,6 +218,48 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
 theme_override_fonts/font = ExtResource("5_13fdh")
 theme_override_font_sizes/font_size = 30
 text = "FINISH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Eraser" type="TextureButton" parent="Container/CanvasLayer/DrawingTab" unique_id=886703051]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 379.0
+offset_right = 1124.0
+offset_bottom = 443.0
+texture_normal = ExtResource("6_jy1x6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/DrawingTab/Eraser" unique_id=805102731]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("5_13fdh")
+theme_override_font_sizes/font_size = 30
+text = "ERASER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Size" type="TextureButton" parent="Container/CanvasLayer/DrawingTab" unique_id=933036289]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 456.0
+offset_right = 1124.0
+offset_bottom = 520.0
+texture_normal = ExtResource("6_jy1x6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/DrawingTab/Size" unique_id=882939432]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("5_13fdh")
+theme_override_font_sizes/font_size = 30
+text = "SMALL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -273,6 +318,7 @@ date_time_teller = NodePath("../Container/CanvasLayer/DateTime")
 [node name="SettingsManager" type="Node" parent="." unique_id=1689479507 node_paths=PackedStringArray("canvas_layer", "container")]
 script = ExtResource("11_2l3r8")
 canvas_layer = NodePath("../Container/CanvasLayer")
+settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
@@ -281,4 +327,6 @@ container = NodePath("../Container")
 [connection signal="button_down" from="Container/CanvasLayer/Board" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/Settings" to="SettingsManager" method="_on_settings_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Eraser" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_eraser_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Size" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_size_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Clear" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_clear_button_down"]

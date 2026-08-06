@@ -9,11 +9,24 @@ var texture_size : Vector2i = Vector2i(512, 512);
 
 @export var camera : Camera2D;
 
+enum BrushSize {
+	SMALL,
+	MEDIUM,
+	LARGE
+}
+
 var current_goal = null;
 
 var completed = false;
 
 var board;
+
+@export var eraser_button : TextureButton;
+@export var size_button : TextureButton;
+
+var erasing := false;
+
+var brush_size := BrushSize.SMALL;
 
 func disappear_goal_menu() -> void:
 	for control_obj in canvas_layer.get_children():
@@ -27,14 +40,31 @@ func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var local_pos = get_local_mouse_position()
 		
-		drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 8, 8), source_img, Color.BLACK)
-
+		if (!erasing):
+			match (brush_size):
+				BrushSize.SMALL:
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 8, 8), source_img, Color.BLACK);
+				BrushSize.MEDIUM:
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 16, 16), source_img, Color.BLACK);
+				BrushSize.LARGE:	
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 24, 24), source_img, Color.BLACK);
+		else:
+			match (brush_size):
+				BrushSize.SMALL:
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 8, 8), source_img, Color.WHITE);
+				BrushSize.MEDIUM:
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 16, 16), source_img, Color.WHITE);
+				BrushSize.LARGE:	
+					drawable_texture.blit_rect(Rect2i(local_pos.x, local_pos.y, 24, 24), source_img, Color.WHITE);
 func start_drawing(unfinished_goal : UnfinishedGoal) -> void:
+	erasing = false;
+	var eraser_button_text = eraser_button.get_child(0);
+	eraser_button_text.text = "BRUSH";
+
 	drawable_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8);
 	
 	get_parent().visible = true;
 	current_goal = unfinished_goal;
-	print(unfinished_goal)
 	
 	disappear_goal_menu();
 
@@ -88,3 +118,26 @@ func _on_board_button_down() -> void:
 		board.get_child(0).visible = true;
 		
 	board.find_child("Camera2D").make_current();
+
+func _on_eraser_button_down() -> void:
+	var eraser_button_text = eraser_button.get_child(0);
+	
+	if (eraser_button_text.text == "BRUSH"):
+		eraser_button_text.text = "ERASER";
+		erasing = true;
+	else:
+		eraser_button_text.text = "BRUSH";
+		erasing = false;
+
+func _on_size_button_down() -> void:
+	var size_button_text = size_button.get_child(0);
+	
+	if (size_button_text.text == "SMALL"):
+		size_button_text.text = "MEDIUM";
+		brush_size = BrushSize.MEDIUM;
+	elif (size_button_text.text == "MEDIUM"):
+		size_button_text.text = "LARGE";
+		brush_size = BrushSize.LARGE;
+	else:
+		size_button_text.text = "SMALL";
+		brush_size = BrushSize.SMALL;

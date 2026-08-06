@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="2_iy113"]
 [ext_resource type="Script" uid="uid://cgqpxuon12nme" path="res://scripts/goal_draw.gd" id="2_kalp8"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_yweip"]
-[ext_resource type="Script" uid="uid://cbjaau5wchqbn" path="res://nodes/delete_goal.gd" id="7_a61ah"]
+[ext_resource type="Script" uid="uid://cbjaau5wchqbn" path="res://scripts/delete_goal.gd" id="7_a61ah"]
 
 [node name="GoalButton" type="TextureRect" unique_id=110054324]
 custom_minimum_size = Vector2(512, 236)

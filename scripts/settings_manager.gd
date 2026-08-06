@@ -14,9 +14,9 @@ func _on_settings_button_down() -> void:
 	canvas_layer.visible = false;
 	
 	if (created_settings == null):
-		created_settings = preload("res://nodes/board.tscn").instantiate();
+		created_settings = settings_template.instantiate();
 		tree.root.add_child(created_settings);
 	else:
-		created_settings.get_child(0).visible = true;
+		created_settings.get_child(1).visible = true;
 		
 	created_settings.find_child("Camera2D").make_current();
