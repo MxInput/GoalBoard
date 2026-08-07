@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cty4noj25kuaw"]
 
+[ext_resource type="Script" uid="uid://2u3sh1774w8j" path="res://nodes/background_menu.gd" id="1_kp4qr"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_hhqjc"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="4_kj76o"]
-[ext_resource type="PackedScene" uid="uid://jaooyt12sae2" path="res://nodes/background_template.tscn" id="4_koamg"]
 
 [node name="Backgrounds" type="Node" unique_id=1006576281]
+script = ExtResource("1_kp4qr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
 zoom = Vector2(0.4, 0.4)
@@ -55,18 +56,12 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Container" unique_id=607335597]
 layout_mode = 0
-offset_left = -396.0
+offset_left = -585.0
 offset_top = 192.0
-offset_right = 1109.0
-offset_bottom = 565.0
+offset_right = 1278.0
+offset_bottom = 1176.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Container/ScrollContainer" unique_id=183869728]
-layout_mode = 2
-
-[node name="BackgroundTemplate" parent="Container/ScrollContainer/VBoxContainer" unique_id=291632856 instance=ExtResource("4_koamg")]
-layout_mode = 2
-
-[node name="BackgroundTemplate2" parent="Container/ScrollContainer/VBoxContainer" unique_id=735418448 instance=ExtResource("4_koamg")]
 layout_mode = 2
 
 [connection signal="button_down" from="Container/Return" to="." method="_on_return_button_down"]

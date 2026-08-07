@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c37an55ohkfh"
-path="res://.godot/imported/white_goal.png-0ad2609ebe1c4d5ba9fcd018ad7faab7.ctex"
+uid="uid://cmluoio5cisko"
+path="res://.godot/imported/small_dark_button.png-e97414f0d0771fa5817f6183a032b6ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/white_goal.png"
-dest_files=["res://.godot/imported/white_goal.png-0ad2609ebe1c4d5ba9fcd018ad7faab7.ctex"]
+source_file="res://images/backgrounds/dark_stuff/small_dark_button.png"
+dest_files=["res://.godot/imported/small_dark_button.png-e97414f0d0771fa5817f6183a032b6ef.ctex"]
 
 [params]
 

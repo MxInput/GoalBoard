@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dycl33dnh1oiy"
-path="res://.godot/imported/white_button.png-88b57a097e70caf017565f95888400ce.ctex"
+uid="uid://de3p8ga1ya4dj"
+path="res://.godot/imported/goal_sunflower.png-a1fe0482b708297a7a9279c3160092ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/white_button.png"
-dest_files=["res://.godot/imported/white_button.png-88b57a097e70caf017565f95888400ce.ctex"]
+source_file="res://images/backgrounds/sun_stuff/goal_sunflower.png"
+dest_files=["res://.godot/imported/goal_sunflower.png-a1fe0482b708297a7a9279c3160092ed.ctex"]
 
 [params]
 

@@ -30,12 +30,16 @@ func _on_backgrounds_button_down() -> void:
 			var name_display = new_background_select.find_child("Name");
 			var image_display = new_background_select.find_child("Background");
 			var button_display = new_background_select.find_child("ButtonShow");
+			var small_button_display = new_background_select.find_child("SmButtonShow");
+			var goal_display = new_background_select.find_child("GoalShow");
 			
 			new_background_select.background = current_background;
 			
 			name_display.text = current_background.identifier;
 			image_display.texture = current_background.background_texture;
 			button_display.texture = current_background.button_texture;
+			small_button_display.texture = current_background.small_button_texture;
+			goal_display.texture = current_background.goal_texture;
 	else:
 		created_background.get_child(1).visible = true;
 		

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq0ewcqbq8fk1"
-path="res://.godot/imported/sunflower_bg.png-073f716437593f81d06f2be2e7ed4bea.ctex"
+uid="uid://bbjhqgl3rcjui"
+path="res://.godot/imported/white_background.png-d8aeb7565603b731caffd16183173222.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backgrounds/sunflower_bg.png"
-dest_files=["res://.godot/imported/sunflower_bg.png-073f716437593f81d06f2be2e7ed4bea.ctex"]
+source_file="res://images/backgrounds/white_stuff/white_background.png"
+dest_files=["res://.godot/imported/white_background.png-d8aeb7565603b731caffd16183173222.ctex"]
 
 [params]
 

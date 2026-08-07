@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbjhqgl3rcjui"
-path="res://.godot/imported/white_background.png-a115b2774f52d89958d244efd65ad44e.ctex"
+uid="uid://g6gd3gewidd"
+path="res://.godot/imported/white_sm_button.png-613862b5cddf3425ae55fa37bda23738.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/white_background.png"
-dest_files=["res://.godot/imported/white_background.png-a115b2774f52d89958d244efd65ad44e.ctex"]
+source_file="res://images/backgrounds/white_stuff/white_sm_button.png"
+dest_files=["res://.godot/imported/white_sm_button.png-613862b5cddf3425ae55fa37bda23738.ctex"]
 
 [params]
 
