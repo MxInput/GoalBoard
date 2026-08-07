@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://jaooyt12sae2"]
+
+[ext_resource type="Texture2D" uid="uid://g65ddevkf084" path="res://images/brush_stroke.png" id="1_twnpd"]
+[ext_resource type="Script" uid="uid://b28yki0ahigsf" path="res://scripts/background_select.gd" id="2_pvxfq"]
+
+[node name="BackgroundTemplate" type="TextureRect" unique_id=291632856]
+offset_right = 840.0
+offset_bottom = 283.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_twnpd")
+script = ExtResource("2_pvxfq")
+
+[node name="Enable" type="Button" parent="." unique_id=533224672]
+layout_mode = 0
+offset_right = 388.0
+offset_bottom = 115.0
+text = "USE THIS"
+
+[node name="Background" type="TextureRect" parent="." unique_id=1020888878]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 223.0
+offset_right = 136.0
+offset_bottom = 263.0
+
+[node name="ButtonShow" type="TextureRect" parent="." unique_id=1797819111]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 353.0
+offset_right = 136.0
+offset_bottom = 393.0
+
+[node name="Name" type="RichTextLabel" parent="." unique_id=6726292]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

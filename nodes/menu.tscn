@@ -2,16 +2,19 @@
 
 [ext_resource type="Script" uid="uid://b3hmuqqepo4mc" path="res://scripts/goal_creation.gd" id="1_jday5"]
 [ext_resource type="PackedScene" uid="uid://8irupc3xmvho" path="res://nodes/goal.tscn" id="2_ewqsw"]
-[ext_resource type="Texture2D" uid="uid://b52ijj6tvk7hc" path="res://images/backgrounds/bow_bg.png" id="3_fhr7y"]
+[ext_resource type="Texture2D" uid="uid://b52ijj6tvk7hc" path="res://images/backgrounds/pink_stuff/bow_bg.png" id="3_fhr7y"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="4_2l3r8"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="5_13fdh"]
-[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/buttons/bow_button.png" id="6_jy1x6"]
+[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="6_jy1x6"]
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://scripts/draw.gd" id="7_o74un"]
 [ext_resource type="Script" uid="uid://bvwhhnvg5sabh" path="res://scripts/disappear_warning.gd" id="9_ewqsw"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="9_fhr7y"]
 [ext_resource type="Script" uid="uid://b7ujogcbp07vf" path="res://scripts/date_manager.gd" id="10_fhr7y"]
 [ext_resource type="Script" uid="uid://b7h7kgifm3702" path="res://scripts/settings_manager.gd" id="11_2l3r8"]
 [ext_resource type="PackedScene" uid="uid://b34tbdj6sgtwh" path="res://nodes/settings.tscn" id="12_13fdh"]
+[ext_resource type="Script" uid="uid://bb7agppqhofsd" path="res://scripts/background_manager.gd" id="13_jy1x6"]
+[ext_resource type="PackedScene" uid="uid://cty4noj25kuaw" path="res://nodes/backgrounds.tscn" id="14_o74un"]
+[ext_resource type="PackedScene" uid="uid://jaooyt12sae2" path="res://nodes/background_template.tscn" id="15_jt0lk"]
 
 [sub_resource type="DrawableTexture2D" id="DrawableTexture2D_kc3a4"]
 
@@ -158,6 +161,13 @@ offset_top = 604.0
 offset_right = 359.0
 offset_bottom = 635.0
 text = "SETTINGS"
+
+[node name="Backgrounds" type="Button" parent="Container/CanvasLayer" unique_id=1762645522]
+offset_left = 368.0
+offset_top = 604.0
+offset_right = 534.0
+offset_bottom = 635.0
+text = "BACKGROUNDS"
 
 [node name="DrawingTab" type="Control" parent="Container/CanvasLayer" unique_id=519973302]
 visible = false
@@ -309,6 +319,14 @@ text = "11/22/2013 12:13:37"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control" type="Control" parent="Container/CanvasLayer" unique_id=2109012656]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 604.0
+offset_right = 359.0
+offset_bottom = 636.0
+
 [node name="SaveManager" type="Node" parent="." unique_id=1447543356]
 
 [node name="DateManager" type="Node" parent="." unique_id=548806606 node_paths=PackedStringArray("date_time_teller")]
@@ -321,11 +339,19 @@ canvas_layer = NodePath("../Container/CanvasLayer")
 settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
+[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container")]
+script = ExtResource("13_jy1x6")
+canvas_layer = NodePath("../Container/CanvasLayer")
+backgrond_template = ExtResource("14_o74un")
+container = NodePath("../Container")
+background_select_template = ExtResource("15_jt0lk")
+
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
 [connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Board" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/Settings" to="SettingsManager" method="_on_settings_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/Backgrounds" to="BackgroundManager" method="_on_backgrounds_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Eraser" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_eraser_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Size" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_size_button_down"]

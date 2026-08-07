@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cty4noj25kuaw"]
+
+[ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_hhqjc"]
+[ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="4_kj76o"]
+[ext_resource type="PackedScene" uid="uid://jaooyt12sae2" path="res://nodes/background_template.tscn" id="4_koamg"]
+
+[node name="Backgrounds" type="Node" unique_id=1006576281]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
+zoom = Vector2(0.4, 0.4)
+limit_left = -1149
+limit_top = -60
+limit_right = 1681
+limit_bottom = 1441
+
+[node name="Container" type="Control" parent="." unique_id=701028031]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Container" unique_id=151846489]
+layout_mode = 0
+offset_left = -1996.0
+offset_top = -747.0
+offset_right = 3388.0
+offset_bottom = 2414.0
+color = Color(0.9986002, 0.8335006, 0.9089892, 1)
+
+[node name="Return" type="Button" parent="Container" unique_id=1478287858]
+layout_mode = 0
+offset_left = -1064.0
+offset_top = 1282.0
+offset_right = -765.0
+offset_bottom = 1359.0
+theme_override_fonts/font = ExtResource("2_hhqjc")
+theme_override_font_sizes/font_size = 40
+text = "GO BACK"
+
+[node name="Title" type="RichTextLabel" parent="Container" unique_id=555151454]
+z_index = 1
+layout_mode = 0
+offset_left = -1108.0
+offset_top = -83.0
+offset_right = 1794.0
+offset_bottom = 163.0
+theme_override_colors/default_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6117647)
+theme_override_fonts/normal_font = ExtResource("4_kj76o")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[wave]BACKGROUNDS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container" unique_id=607335597]
+layout_mode = 0
+offset_left = -396.0
+offset_top = 192.0
+offset_right = 1109.0
+offset_bottom = 565.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/ScrollContainer" unique_id=183869728]
+layout_mode = 2
+
+[node name="BackgroundTemplate" parent="Container/ScrollContainer/VBoxContainer" unique_id=291632856 instance=ExtResource("4_koamg")]
+layout_mode = 2
+
+[node name="BackgroundTemplate2" parent="Container/ScrollContainer/VBoxContainer" unique_id=735418448 instance=ExtResource("4_koamg")]
+layout_mode = 2
+
+[connection signal="button_down" from="Container/Return" to="." method="_on_return_button_down"]

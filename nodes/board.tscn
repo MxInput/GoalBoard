@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3lgpyn65g6ki" path="res://scripts/boardHandler.gd" id="1_inolc"]
 [ext_resource type="Script" uid="uid://dtxvstvg7jirl" path="res://scripts/move_camera.gd" id="1_k4sgw"]
 [ext_resource type="Script" uid="uid://b22nskl2gxpp1" path="res://scripts/move_image.gd" id="2_xy510"]
-[ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://images/goal_pink.png" id="4_f201g"]
+[ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://images/backgrounds/pink_stuff/goal_pink.png" id="4_f201g"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="5_8forb"]
 [ext_resource type="Script" uid="uid://bbw1wdmd02p4s" path="res://scripts/popup_handler.gd" id="5_8kn72"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="6_8kn72"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bn3bxon5i82e8" path="res://images/arrows/up_arrow.png" id="9_515wt"]
 [ext_resource type="Texture2D" uid="uid://cndl2em1yabag" path="res://images/arrows/left_arrow.png" id="10_7fvmb"]
 [ext_resource type="Texture2D" uid="uid://detaa54s7sm8h" path="res://images/arrows/right_arrow.png" id="11_o1d5c"]
-[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/buttons/bow_button.png" id="12_515wt"]
+[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="12_515wt"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="13_7fvmb"]
 
 [node name="Board" type="Node" unique_id=1006576281]

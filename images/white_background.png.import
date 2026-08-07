@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci8pg4cndtkm5"
-path="res://.godot/imported/goal_pink.png-f7b02b5c2c784560e135c7c641eedf2f.ctex"
+uid="uid://bbjhqgl3rcjui"
+path="res://.godot/imported/white_background.png-a115b2774f52d89958d244efd65ad44e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/goal_pink.png"
-dest_files=["res://.godot/imported/goal_pink.png-f7b02b5c2c784560e135c7c641eedf2f.ctex"]
+source_file="res://images/white_background.png"
+dest_files=["res://.godot/imported/white_background.png-a115b2774f52d89958d244efd65ad44e.ctex"]
 
 [params]
 

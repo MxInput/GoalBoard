@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crkrawtdfd52a"
-path="res://.godot/imported/bow_button.png-99273e917936d169602c5ceeeeef5be5.ctex"
+uid="uid://ci8pg4cndtkm5"
+path="res://.godot/imported/goal_pink.png-cca0ac263fd4a3092e4ec848b833cc7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/buttons/bow_button.png"
-dest_files=["res://.godot/imported/bow_button.png-99273e917936d169602c5ceeeeef5be5.ctex"]
+source_file="res://images/backgrounds/pink_stuff/goal_pink.png"
+dest_files=["res://.godot/imported/goal_pink.png-cca0ac263fd4a3092e4ec848b833cc7e.ctex"]
 
 [params]
 
