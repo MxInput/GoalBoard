@@ -10,8 +10,9 @@ extends Resource
 
 @export var color1 : Color;
 @export var color2 : Color;
+@export var color3 : Color;
 
-func _init(_identifier := "", _background_texture := Texture2D.new(), _button_texture := Texture2D.new(), _small_button_texture := Texture2D.new(), _goal_texture := Texture2D.new(), _color1 := Color.WHEAT, _color2 := Color.WHITE) -> void:
+func _init(_identifier := "", _background_texture := Texture2D.new(), _button_texture := Texture2D.new(), _small_button_texture := Texture2D.new(), _goal_texture := Texture2D.new(), _color1 := Color.WHITE, _color2 := Color.WHITE, _color3 := Color.WHITE) -> void:
 	identifier = _identifier;
 	
 	background_texture = _background_texture;
@@ -21,3 +22,4 @@ func _init(_identifier := "", _background_texture := Texture2D.new(), _button_te
 	
 	color1 = _color1;
 	color2 = _color2;
+	color3 = _color3;

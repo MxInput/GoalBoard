@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="12_515wt"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="13_7fvmb"]
 
-[node name="Board" type="Node" unique_id=1006576281]
+[node name="Board" type="Node" unique_id=1006576281 node_paths=PackedStringArray("container")]
 script = ExtResource("1_inolc")
+container = NodePath("Container")
 
 [node name="Container" type="Control" parent="." unique_id=701028031]
 layout_mode = 3
@@ -29,7 +30,7 @@ offset_left = -1996.0
 offset_top = -747.0
 offset_right = 3388.0
 offset_bottom = 2414.0
-color = Color(0.9986002, 0.8335006, 0.9089892, 1)
+color = Color(0.39607844, 0.48235294, 0.62352943, 1)
 
 [node name="Liner" type="ColorRect" parent="Container" unique_id=186165036]
 layout_mode = 0
@@ -37,7 +38,7 @@ offset_left = -1148.0
 offset_top = -61.0
 offset_right = 1679.0
 offset_bottom = 1439.0
-color = Color(0.9957759, 0.44732118, 0.7440068, 1)
+color = Color(0.105882354, 0.16470589, 0.26666668, 1)
 
 [node name="Board" type="ColorRect" parent="Container" unique_id=908202324]
 layout_mode = 0

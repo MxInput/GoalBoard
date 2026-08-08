@@ -1,6 +1,15 @@
 extends Node
 
+@onready var tree = get_tree();
+
+@export var container : Control;
+
 func _ready() -> void:
+	var backgrounds = tree.root.find_child("Backgrounds", true, false);
+	if (backgrounds != null):
+		backgrounds.goal_board = self;
+		backgrounds.goal_board_container = container;
+	
 	if (MemberVariables.new_member.completed_goals.size() > 0):
 		for completed_goal in MemberVariables.new_member.completed_goals:
 			var new_board_drawing = get_child(0).find_child("Current").duplicate();
@@ -11,7 +20,7 @@ func _ready() -> void:
 			new_board_drawing.position = completed_goal.saved_pos;
 			
 func _on_button_button_down() -> void:
-	find_child("Container").visible = false;
+	container.visible = false;
 	
 	var menu = get_parent().find_child("Menu", true, false);
 	var camera : Camera2D = menu.get_child(0).find_child("Camera2D");
