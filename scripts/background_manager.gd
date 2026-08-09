@@ -13,6 +13,10 @@ var background_list := Background_List.new();
 
 @export var background_select_template : PackedScene;
 		
+@export var background : TextureRect;
+
+func _ready() -> void:
+			
 func _on_backgrounds_button_down() -> void:
 	container.visible = false;
 	canvas_layer.visible = false;

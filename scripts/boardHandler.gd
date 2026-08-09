@@ -3,13 +3,17 @@ extends Node
 @onready var tree = get_tree();
 
 @export var container : Control;
+@export var liner : ColorRect;
+@export var background : ColorRect;
+@export var popup : TextureRect;
 
 func _ready() -> void:
 	var backgrounds = tree.root.find_child("Backgrounds", true, false);
 	if (backgrounds != null):
 		backgrounds.goal_board = self;
-		backgrounds.goal_board_container = container;
-	
+		
+	change_board_colors(MemberVariables.new_member.current_background);
+		
 	if (MemberVariables.new_member.completed_goals.size() > 0):
 		for completed_goal in MemberVariables.new_member.completed_goals:
 			var new_board_drawing = get_child(0).find_child("Current").duplicate();
@@ -18,7 +22,17 @@ func _ready() -> void:
 			new_board_drawing.visible = true;
 			new_board_drawing.completed_goal = completed_goal;
 			new_board_drawing.position = completed_goal.saved_pos;
-			
+		
+func change_board_colors(bg) -> void:
+	liner.color = bg.color1;
+	background.color = bg.color2;
+	popup.texture = bg.goal_texture;
+	popup.find_child("Delete", true, false).texture_normal = bg.small_button_texture;
+	popup.find_child("Delete", true, false).get_child(0).set("theme_override_colors/font_color", bg.color5);
+	popup.find_child("Identifier", true, false).set("theme_override_colors/font_color", bg.color4);
+	popup.find_child("DateCreated", true, false).set("theme_override_colors/font_color", bg.color3);
+	popup.find_child("DateCompleted", true, false).set("theme_override_colors/font_color", bg.color3);
+		
 func _on_button_button_down() -> void:
 	container.visible = false;
 	

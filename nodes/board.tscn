@@ -11,12 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://bn3bxon5i82e8" path="res://images/arrows/up_arrow.png" id="9_515wt"]
 [ext_resource type="Texture2D" uid="uid://cndl2em1yabag" path="res://images/arrows/left_arrow.png" id="10_7fvmb"]
 [ext_resource type="Texture2D" uid="uid://detaa54s7sm8h" path="res://images/arrows/right_arrow.png" id="11_o1d5c"]
-[ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="12_515wt"]
+[ext_resource type="Texture2D" uid="uid://beew7d14efdra" path="res://images/backgrounds/pink_stuff/small_bow_button.png" id="12_7fvmb"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="13_7fvmb"]
 
-[node name="Board" type="Node" unique_id=1006576281 node_paths=PackedStringArray("container")]
+[node name="Board" type="Node" unique_id=1006576281 node_paths=PackedStringArray("container", "liner", "background", "popup")]
 script = ExtResource("1_inolc")
 container = NodePath("Container")
+liner = NodePath("Container/Liner")
+background = NodePath("Container/Background")
+popup = NodePath("Container/Popup")
 
 [node name="Container" type="Control" parent="." unique_id=701028031]
 layout_mode = 3
@@ -169,7 +172,7 @@ offset_left = 61.0
 offset_top = 285.0
 offset_right = 260.0
 offset_bottom = 349.0
-texture_normal = ExtResource("12_515wt")
+texture_normal = ExtResource("12_7fvmb")
 ignore_texture_size = true
 stretch_mode = 0
 

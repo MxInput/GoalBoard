@@ -21,16 +21,31 @@ var max_text_length := 300;
 func _ready() -> void:
 	if (MemberVariables.new_member.unfinished_goals.size() > 0):
 		for unfinished_goal in MemberVariables.new_member.unfinished_goals:
+			var bg := MemberVariables.new_member.current_background;
+			
 			var new_goal := temp_goal.instantiate();
+			new_goal.texture = bg.goal_texture;
+			
 			v_box.add_child(new_goal);
 			v_box.move_child(v_box.find_child("Space"), -1);
+			
 			new_goal.find_child("Identifier").text = unfinished_goal.identifier;
+			new_goal.find_child("Identifier").set("theme_override_colors/font_color", bg.color4);
+			
 			new_goal.find_child("Description").get_child(0).text = unfinished_goal.description;
+			
 			var found_date = unfinished_goal.date;
 			new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
+			new_goal.find_child("Date").set("theme_override_colors/font_color", bg.color3);
+			
 			new_goal.find_child("Complete").unfinished_goal = unfinished_goal;
+			new_goal.find_child("Complete").texture_normal = bg.button_texture;
+			new_goal.find_child("Complete").get_child(0).set("theme_override_colors/font_color", bg.color5);
+			
 			new_goal.find_child("Delete").unfinished_goal = unfinished_goal;
-		
+			new_goal.find_child("Delete").texture_normal = bg.button_texture;
+			new_goal.find_child("Delete").get_child(0).set("theme_override_colors/font_color", bg.color5);
+			
 func _on_text_edit_text_changed() -> void:
 	var new_text := desc_box.text;
 	
