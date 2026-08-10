@@ -7,6 +7,7 @@ extends Node
 @export var background : ColorRect;
 @export var popup : TextureRect;
 @export var return_button : TextureButton;
+@export var clear_button : TextureButton;
 
 func _ready() -> void:
 	var backgrounds = tree.root.find_child("Backgrounds", true, false);
@@ -39,6 +40,9 @@ func change_board_colors(bg) -> void:
 	return_button.texture_normal = bg.small_button_texture;
 	return_button.get_child(0).set("theme_override_colors/font_color", bg.color5);
 		
+	clear_button.texture_normal = bg.button_texture;
+	clear_button.get_child(0).set("theme_override_colors/font_color", bg.color5);
+	
 func _on_button_button_down() -> void:
 	container.visible = false;
 	
@@ -58,3 +62,13 @@ func _on_button_button_down() -> void:
 		
 		if (control_obj.name != "DrawingTab" && control_obj.name != "Warning"):
 			control_obj.visible = true;
+
+func _on_clear_button_down() -> void:
+	var all_drawings = tree.get_nodes_in_group("drawing");
+	
+	for drawing in all_drawings:
+		if (drawing.name != "Current"):
+			drawing.queue_free();
+			
+	MemberVariables.new_member.completed_goals.clear();
+	MemberVariables.write_save();		

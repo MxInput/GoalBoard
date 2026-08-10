@@ -10,6 +10,8 @@ var showing_image = false;
 
 var finished_move_timer : Timer;
 
+var last_position;
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		if (!popup.hovering):
@@ -20,12 +22,17 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	finished_move_timer = get_child(0);
 	
+	last_position = position;
+	
 func _process(_delta: float) -> void:
 	var mouse_pos = get_global_mouse_position();
 	
 	if (holding && hovering):
 		position = mouse_pos - Vector2(size.x / 2, size.y/2);
-		finished_move_timer.start();	
+		
+		if (last_position != position):
+			last_position = position;
+			finished_move_timer.start();	
 		
 	if (holding):
 		popup.visible = false;
