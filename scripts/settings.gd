@@ -7,7 +7,33 @@ extends Node
 @export var hr_24 : CheckBox;
 @export var hr_12 : CheckBox;
 
+@export var background : ColorRect;
+
+@export var title : RichTextLabel;
+
+@export var return_button : TextureButton;
+
+@export var subtitle1 : RichTextLabel;
+@export var subtitle2 : RichTextLabel;
+@export var subtitle3 : RichTextLabel;
+	
+func fit_to_background(bg) -> void:
+	title.set("theme_override_colors/default_color", bg.color1);
+	
+	return_button.texture_normal = bg.small_button_texture;
+	return_button.get_child(0).set("theme_override_colors/font_color", bg.color5);
+	
+	background.color = bg.color2;
+	
+	subtitle1.set("theme_override_colors/default_color", bg.color2);
+	subtitle2.set("theme_override_colors/default_color", bg.color2);
+	subtitle3.set("theme_override_colors/default_color", bg.color2);
+	
 func _ready() -> void:
+	var found_background = MemberVariables.new_member.current_background;
+	print("here")
+	fit_to_background(found_background);
+	
 	var member = MemberVariables.new_member;
 	var date_format = member.month_order;
 	var is_12_hr = member.is_12_hr;

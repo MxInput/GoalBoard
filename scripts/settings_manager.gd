@@ -8,7 +8,7 @@ var created_settings;
 @onready var tree = get_tree();
 
 @export var container : Node2D;
-
+	
 func _on_settings_button_down() -> void:
 	container.visible = false;
 	canvas_layer.visible = false;

@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="5_13fdh"]
 [ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="6_jy1x6"]
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://scripts/draw.gd" id="7_o74un"]
+[ext_resource type="Texture2D" uid="uid://bd5xygtchbwgk" path="res://images/backgrounds/sun_stuff/small_sun_button.png" id="7_pys32"]
 [ext_resource type="Script" uid="uid://bvwhhnvg5sabh" path="res://scripts/disappear_warning.gd" id="9_ewqsw"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="9_fhr7y"]
 [ext_resource type="Script" uid="uid://b7ujogcbp07vf" path="res://scripts/date_manager.gd" id="10_fhr7y"]
@@ -75,12 +76,12 @@ layout_mode = 2
 
 [node name="CreationTitle" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=816037086]
 offset_left = 593.0
-offset_top = 5.0
+offset_top = 33.0
 offset_right = 1139.0
 offset_bottom = 124.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("5_13fdh")
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave] CREATE A NEW GOAL"
 horizontal_alignment = 1
@@ -88,12 +89,12 @@ vertical_alignment = 1
 
 [node name="GoalTitle" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=361505536]
 offset_left = 15.0
-offset_top = 5.0
+offset_top = 41.0
 offset_right = 561.0
 offset_bottom = 124.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("5_13fdh")
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave] CREATED GOALS"
 horizontal_alignment = 1
@@ -148,26 +149,62 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 placeholder_text = "Enter an Identifier for this goal."
 max_length = 50
 
-[node name="BoardButton" type="Button" parent="Container/CanvasLayer" unique_id=997116994]
+[node name="BoardButton" type="TextureButton" parent="Container/CanvasLayer" unique_id=1778099135]
 offset_left = 13.0
 offset_top = 604.0
-offset_right = 179.0
-offset_bottom = 635.0
-text = "GO TO GOAL BOARD"
+offset_right = 181.0
+offset_bottom = 641.0
+texture_normal = ExtResource("7_pys32")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Settings" type="Button" parent="Container/CanvasLayer" unique_id=70727324]
+[node name="Label" type="Label" parent="Container/CanvasLayer/BoardButton" unique_id=1053249063]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 31.0
+theme_override_colors/font_shadow_color = Color(0, 0.116986625, 0.30218932, 0.60784316)
+theme_override_fonts/font = ExtResource("4_2l3r8")
+text = "YOUR BOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="Container/CanvasLayer" unique_id=186161543]
 offset_left = 193.0
 offset_top = 604.0
-offset_right = 359.0
-offset_bottom = 635.0
-text = "SETTINGS"
+offset_right = 361.0
+offset_bottom = 641.0
+texture_normal = ExtResource("7_pys32")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="BackgroundButton" type="Button" parent="Container/CanvasLayer" unique_id=1762645522]
+[node name="Label" type="Label" parent="Container/CanvasLayer/Settings" unique_id=852150227]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 31.0
+theme_override_colors/font_shadow_color = Color(0, 0.116986625, 0.30218932, 0.60784316)
+theme_override_fonts/font = ExtResource("4_2l3r8")
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundButton" type="TextureButton" parent="Container/CanvasLayer" unique_id=1811793897]
 offset_left = 368.0
 offset_top = 604.0
-offset_right = 534.0
-offset_bottom = 635.0
+offset_right = 536.0
+offset_bottom = 641.0
+texture_normal = ExtResource("7_pys32")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/BackgroundButton" unique_id=273262100]
+layout_mode = 0
+offset_right = 169.0
+offset_bottom = 31.0
+theme_override_colors/font_shadow_color = Color(0, 0.116986625, 0.30218932, 0.60784316)
+theme_override_fonts/font = ExtResource("4_2l3r8")
 text = "BACKGROUNDS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DrawingTab" type="Control" parent="Container/CanvasLayer" unique_id=519973302]
 visible = false
@@ -309,23 +346,15 @@ vertical_alignment = 1
 script = ExtResource("9_ewqsw")
 
 [node name="DateTime" type="RichTextLabel" parent="Container/CanvasLayer" unique_id=1654690087]
-offset_right = 398.0
-offset_bottom = 33.0
+offset_right = 589.0
+offset_bottom = 57.0
 theme_override_colors/default_color = Color(0.9098039, 0.41568628, 0.4509804, 1)
-theme_override_colors/font_shadow_color = Color(0.56078434, 0.16470589, 0.1882353, 1)
+theme_override_colors/font_shadow_color = Color(0.012635283, 0.013767371, 0.10564377, 0.61960787)
 theme_override_fonts/normal_font = ExtResource("9_fhr7y")
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 30
 text = "11/22/2013 12:13:37"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Container/CanvasLayer" unique_id=2109012656]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 192.0
-offset_top = 604.0
-offset_right = 359.0
-offset_bottom = 636.0
 
 [node name="SaveManager" type="Node" parent="." unique_id=1447543356]
 
@@ -339,12 +368,22 @@ canvas_layer = NodePath("../Container/CanvasLayer")
 settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
-[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button")]
 script = ExtResource("13_jy1x6")
 canvas_layer = NodePath("../Container/CanvasLayer")
 backgrond_template = ExtResource("14_o74un")
 container = NodePath("../Container")
 background_select_template = ExtResource("15_jt0lk")
+background = NodePath("../Container/CanvasLayer/Background")
+clock = NodePath("../Container/CanvasLayer/DateTime")
+limit_teller1 = NodePath("../Container/CanvasLayer/DescCount")
+limit_teller2 = NodePath("../Container/CanvasLayer/IdentifierCount")
+title1 = NodePath("../Container/CanvasLayer/CreationTitle")
+title2 = NodePath("../Container/CanvasLayer/GoalTitle")
+backgrounds_button = NodePath("../Container/CanvasLayer/BackgroundButton")
+settings_button = NodePath("../Container/CanvasLayer/Settings")
+board_button = NodePath("../Container/CanvasLayer/BoardButton")
+create_button = NodePath("../Container/CanvasLayer/Create")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]

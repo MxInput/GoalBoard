@@ -14,12 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://beew7d14efdra" path="res://images/backgrounds/pink_stuff/small_bow_button.png" id="12_7fvmb"]
 [ext_resource type="FontFile" uid="uid://bo2hhumf6dhn3" path="res://fonts/MangabeyRegular-rgqVO.otf" id="13_7fvmb"]
 
-[node name="Board" type="Node" unique_id=1006576281 node_paths=PackedStringArray("container", "liner", "background", "popup")]
+[node name="Board" type="Node" unique_id=1006576281 node_paths=PackedStringArray("container", "liner", "background", "popup", "return_button")]
 script = ExtResource("1_inolc")
 container = NodePath("Container")
 liner = NodePath("Container/Liner")
 background = NodePath("Container/Background")
 popup = NodePath("Container/Popup")
+return_button = NodePath("Container/Return")
 
 [node name="Container" type="Control" parent="." unique_id=701028031]
 layout_mode = 3
@@ -68,15 +69,25 @@ popup = NodePath("../Popup")
 [node name="FinishMove" type="Timer" parent="Container/Current" unique_id=2058257286]
 wait_time = 3.0
 
-[node name="Return" type="Button" parent="Container" unique_id=1478287858]
+[node name="Return" type="TextureButton" parent="Container" unique_id=598076685]
 layout_mode = 0
 offset_left = -1064.0
 offset_top = 1282.0
 offset_right = -765.0
 offset_bottom = 1359.0
+texture_normal = ExtResource("12_7fvmb")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/Return" unique_id=1421392334]
+layout_mode = 0
+offset_right = 299.0
+offset_bottom = 64.0
+theme_override_colors/font_shadow_color = Color(0, 0.116986625, 0.30218932, 0.60784316)
 theme_override_fonts/font = ExtResource("5_8forb")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Details" type="TextureRect" parent="Container" unique_id=1211002572]
 layout_mode = 0

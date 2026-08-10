@@ -14,9 +14,37 @@ var background_list := Background_List.new();
 @export var background_select_template : PackedScene;
 		
 @export var background : TextureRect;
+@export var clock : RichTextLabel;
+
+@export var limit_teller1 : Label;
+@export var limit_teller2 : Label;
+
+@export var title1 : RichTextLabel;
+@export var title2 : RichTextLabel;
+
+@export var backgrounds_button : TextureButton;
+@export var settings_button : TextureButton;
+@export var board_button : TextureButton;
+
+@export var create_button : TextureButton;
 
 func _ready() -> void:
-			
+	var found_bg = MemberVariables.new_member.current_background;
+	background.texture = found_bg.background_texture;
+	clock.set("theme_override_colors/default_color", found_bg.color7); 
+		
+	limit_teller1.set("theme_override_colors/font_color", found_bg.color7); 
+	limit_teller2.set("theme_override_colors/font_color", found_bg.color7); 
+	
+	title1.set("theme_override_colors/default_color", found_bg.color6); 
+	title2.set("theme_override_colors/default_color", found_bg.color6); 
+	
+	create_button.texture_normal = found_bg.dark_button_texture;
+	
+	board_button.texture_normal = found_bg.dark_small_button_texture;
+	settings_button.texture_normal = found_bg.dark_small_button_texture;
+	backgrounds_button.texture_normal = found_bg.dark_small_button_texture;
+	
 func _on_backgrounds_button_down() -> void:
 	container.visible = false;
 	canvas_layer.visible = false;
