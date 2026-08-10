@@ -368,7 +368,7 @@ canvas_layer = NodePath("../Container/CanvasLayer")
 settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
-[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button", "drawing_frame", "drawing_title", "draw_button_1", "draw_button_2", "draw_button_3", "draw_button_4")]
 script = ExtResource("13_jy1x6")
 canvas_layer = NodePath("../Container/CanvasLayer")
 backgrond_template = ExtResource("14_o74un")
@@ -384,6 +384,12 @@ backgrounds_button = NodePath("../Container/CanvasLayer/BackgroundButton")
 settings_button = NodePath("../Container/CanvasLayer/SettingsButton")
 board_button = NodePath("../Container/CanvasLayer/BoardButton")
 create_button = NodePath("../Container/CanvasLayer/Create")
+drawing_frame = NodePath("../Container/CanvasLayer/DrawingTab/Background")
+drawing_title = NodePath("../Container/CanvasLayer/DrawingTab/Description")
+draw_button_1 = NodePath("../Container/CanvasLayer/DrawingTab/Finish")
+draw_button_2 = NodePath("../Container/CanvasLayer/DrawingTab/Eraser")
+draw_button_3 = NodePath("../Container/CanvasLayer/DrawingTab/Size")
+draw_button_4 = NodePath("../Container/CanvasLayer/DrawingTab/Clear")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]

@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://beew7d14efdra" path="res://images/backgrounds/pink_stuff/small_bow_button.png" id="2_kp4qr"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="4_kj76o"]
 
-[node name="Backgrounds" type="Node" unique_id=1006576281 node_paths=PackedStringArray("title", "background", "return_button")]
+[node name="Backgrounds" type="Node" unique_id=1006576281 node_paths=PackedStringArray("title", "background", "return_button", "v_box_container")]
 script = ExtResource("1_kp4qr")
 title = NodePath("Container/Title")
 background = NodePath("Container/Background")
 return_button = NodePath("Container/Return")
+v_box_container = NodePath("Container/ScrollContainer/VBoxContainer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
 zoom = Vector2(0.4, 0.4)
@@ -71,7 +72,7 @@ vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Container" unique_id=607335597]
 layout_mode = 0
-offset_left = -585.0
+offset_left = -538.0
 offset_top = 192.0
 offset_right = 1278.0
 offset_bottom = 1176.0

@@ -20,9 +20,30 @@ var goal_board : Node;
 
 var settings : Node;
 
-func _ready() -> void:
-	var background = MemberVariables.new_member.current_background;
+@export var v_box_container : VBoxContainer;
 
+func change_background(selected_background) -> void:
+	if (selected_background.is_dark):
+		title.set("theme_override_colors/default_color", selected_background.color2);
+		background.color = selected_background.color1;
+	else:
+		title.set("theme_override_colors/default_color", selected_background.color1);
+		background.color = selected_background.color2;
+		
+	return_button.texture_normal = selected_background.small_button_texture;
+
+	for found_background in v_box_container.get_children():
+		var enable_button = found_background.find_child("Enable");
+		if (selected_background.identifier != "Sunflower"):
+			enable_button.texture_normal = selected_background.small_button_texture;
+		else:
+			enable_button.texture_normal = selected_background.dark_small_button_texture;
+		
+func _ready() -> void:
+	var found_bg = MemberVariables.new_member.current_background;
+		
+	change_background(found_bg);
+	
 	menu = tree.root.find_child("Menu", true, false);
 	
 	settings = tree.root.find_child("Settings", true, false);
@@ -35,11 +56,13 @@ func _ready() -> void:
 	
 	if (goal_board == null):
 		goal_board = tree.root.find_child("Board", true, false);
-					
+				
 func choose_background(bg) -> void:
 	MemberVariables.new_member.current_background = bg;
 	
 	background_manager.change_background(bg);
+	
+	change_background(bg);
 	
 	for found_goal in goal_container.get_child(0).get_children():
 		if (found_goal.name != "Space"):
