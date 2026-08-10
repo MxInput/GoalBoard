@@ -168,7 +168,7 @@ text = "YOUR BOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="TextureButton" parent="Container/CanvasLayer" unique_id=186161543]
+[node name="SettingsButton" type="TextureButton" parent="Container/CanvasLayer" unique_id=186161543]
 offset_left = 193.0
 offset_top = 604.0
 offset_right = 361.0
@@ -177,7 +177,7 @@ texture_normal = ExtResource("7_pys32")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Container/CanvasLayer/Settings" unique_id=852150227]
+[node name="Label" type="Label" parent="Container/CanvasLayer/SettingsButton" unique_id=852150227]
 layout_mode = 0
 offset_right = 170.0
 offset_bottom = 31.0
@@ -381,7 +381,7 @@ limit_teller2 = NodePath("../Container/CanvasLayer/IdentifierCount")
 title1 = NodePath("../Container/CanvasLayer/CreationTitle")
 title2 = NodePath("../Container/CanvasLayer/GoalTitle")
 backgrounds_button = NodePath("../Container/CanvasLayer/BackgroundButton")
-settings_button = NodePath("../Container/CanvasLayer/Settings")
+settings_button = NodePath("../Container/CanvasLayer/SettingsButton")
 board_button = NodePath("../Container/CanvasLayer/BoardButton")
 create_button = NodePath("../Container/CanvasLayer/Create")
 
@@ -389,7 +389,7 @@ create_button = NodePath("../Container/CanvasLayer/Create")
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
 [connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/BoardButton" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
-[connection signal="button_down" from="Container/CanvasLayer/Settings" to="SettingsManager" method="_on_settings_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/SettingsButton" to="SettingsManager" method="_on_settings_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/BackgroundButton" to="BackgroundManager" method="_on_backgrounds_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Finish" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_finish_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/DrawingTab/Eraser" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_eraser_button_down"]

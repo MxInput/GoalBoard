@@ -16,28 +16,62 @@ extends Node
 @export var subtitle1 : RichTextLabel;
 @export var subtitle2 : RichTextLabel;
 @export var subtitle3 : RichTextLabel;
+
+var backgrounds;
+
+@onready var tree = get_tree();
 	
 func fit_to_background(bg) -> void:
-	title.set("theme_override_colors/default_color", bg.color1);
+	if (bg.is_dark):
+		title.set("theme_override_colors/default_color", bg.color2);
+		background.color = bg.color1;
+	else:
+		title.set("theme_override_colors/default_color", bg.color1);
+		background.color = bg.color2;
 	
 	return_button.texture_normal = bg.small_button_texture;
 	return_button.get_child(0).set("theme_override_colors/font_color", bg.color5);
 	
-	background.color = bg.color2;
+	subtitle1.set("theme_override_colors/default_color", bg.color8);
+	subtitle2.set("theme_override_colors/default_color", bg.color8);
+	subtitle3.set("theme_override_colors/default_color", bg.color8);
 	
-	subtitle1.set("theme_override_colors/default_color", bg.color2);
-	subtitle2.set("theme_override_colors/default_color", bg.color2);
-	subtitle3.set("theme_override_colors/default_color", bg.color2);
+	month_first.set("theme_override_colors/font_color", bg.color9);
+	day_first.set("theme_override_colors/font_color", bg.color9);
+	year_first.set("theme_override_colors/font_color", bg.color9);
+	hr_24.set("theme_override_colors/font_color", bg.color9);
+	hr_12.set("theme_override_colors/font_color", bg.color9);
+	
+	month_first.set("theme_override_colors/font_pressed_color", bg.color10);
+	day_first.set("theme_override_colors/font_pressed_color", bg.color10);
+	year_first.set("theme_override_colors/font_pressed_color", bg.color10);
+	hr_24.set("theme_override_colors/font_pressed_color", bg.color10);
+	hr_12.set("theme_override_colors/font_pressed_color", bg.color10);
+	
+	month_first.set("theme_override_colors/font_hover_pressed_color", bg.color8);
+	day_first.set("theme_override_colors/font_hover_pressed_color", bg.color8);
+	year_first.set("theme_override_colors/font_hover_pressed_color", bg.color8);
+	hr_24.set("theme_override_colors/font_hover_pressed_color", bg.color8);
+	hr_12.set("theme_override_colors/font_hover_pressed_color", bg.color8);
+	
+	month_first.set("theme_override_colors/font_hover_color", bg.color10);
+	day_first.set("theme_override_colors/font_hover_color", bg.color10);
+	year_first.set("theme_override_colors/font_hover_color", bg.color10);
+	hr_24.set("theme_override_colors/font_hover_color", bg.color10);
+	hr_12.set("theme_override_colors/font_hover_color", bg.color10);
 	
 func _ready() -> void:
 	var found_background = MemberVariables.new_member.current_background;
-	print("here")
 	fit_to_background(found_background);
 	
 	var member = MemberVariables.new_member;
 	var date_format = member.month_order;
 	var is_12_hr = member.is_12_hr;
 
+	backgrounds = tree.root.find_child("Backgrounds");
+	if (backgrounds != null):
+		backgrounds.settings = self;
+		
 	match (date_format):
 		Member.DateOrders.DAY_FIRST:
 			day_first.button_pressed = true;

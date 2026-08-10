@@ -63,6 +63,8 @@ func _on_text_edit_text_changed() -> void:
 
 func _on_create_button_down() -> void:
 	if (desc_box.text.length() > 0 && identifier_box.text.length() > 0):
+		var bg := MemberVariables.new_member.current_background;
+		
 		var desc_string = desc_box.text;
 		var identifier_string = identifier_box.text;
 		
@@ -73,12 +75,18 @@ func _on_create_button_down() -> void:
 		identifier_count.text = "0/300";
 		
 		var new_goal := temp_goal.instantiate();
+		new_goal.texture = bg.goal_texture;
+		
 		v_box.add_child(new_goal);
 		v_box.move_child(v_box.find_child("Space"), -1);
+		
 		new_goal.find_child("Identifier").text = identifier_string;
+		new_goal.find_child("Identifier").set("theme_override_colors/font_color", bg.color4);
+		
 		new_goal.find_child("Description").get_child(0).text = desc_string;
 		var found_date = Time.get_date_dict_from_system();
 		new_goal.find_child("Date").text = "Created: " + str(found_date["month"]) + "/" + str(found_date["day"]) + "/" + str(found_date["year"]);
+		new_goal.find_child("Date").set("theme_override_colors/font_color", bg.color3);
 		
 		var goal_entry = UnfinishedGoal.new();
 		goal_entry.identifier = identifier_string;
@@ -86,8 +94,13 @@ func _on_create_button_down() -> void:
 		goal_entry.date = found_date;
 		
 		new_goal.find_child("Complete").unfinished_goal = goal_entry;
+		new_goal.find_child("Complete").texture_normal = bg.button_texture;
+		new_goal.find_child("Complete").get_child(0).set("theme_override_colors/font_color", bg.color5);
+			
 		new_goal.find_child("Delete").unfinished_goal = goal_entry;
-		
+		new_goal.find_child("Delete").texture_normal = bg.button_texture;
+		new_goal.find_child("Delete").get_child(0).set("theme_override_colors/font_color", bg.color5);
+			
 		MemberVariables.new_member.unfinished_goals.push_back(goal_entry);
 		MemberVariables.write_save();
 	else:

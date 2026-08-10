@@ -30,6 +30,9 @@ var background_list := Background_List.new();
 
 func _ready() -> void:
 	var found_bg = MemberVariables.new_member.current_background;
+	change_background(found_bg)
+
+func change_background(found_bg) -> void:
 	background.texture = found_bg.background_texture;
 	clock.set("theme_override_colors/default_color", found_bg.color7); 
 		

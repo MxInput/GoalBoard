@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://2u3sh1774w8j" path="res://nodes/background_menu.gd" id="1_kp4qr"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="2_hhqjc"]
+[ext_resource type="Texture2D" uid="uid://beew7d14efdra" path="res://images/backgrounds/pink_stuff/small_bow_button.png" id="2_kp4qr"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="4_kj76o"]
 
-[node name="Backgrounds" type="Node" unique_id=1006576281]
+[node name="Backgrounds" type="Node" unique_id=1006576281 node_paths=PackedStringArray("title", "background", "return_button")]
 script = ExtResource("1_kp4qr")
+title = NodePath("Container/Title")
+background = NodePath("Container/Background")
+return_button = NodePath("Container/Return")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1915878989]
 zoom = Vector2(0.4, 0.4)
@@ -28,15 +32,26 @@ offset_right = 3388.0
 offset_bottom = 2414.0
 color = Color(0.9986002, 0.8335006, 0.9089892, 1)
 
-[node name="Return" type="Button" parent="Container" unique_id=1478287858]
+[node name="Return" type="TextureButton" parent="Container" unique_id=1314694807]
 layout_mode = 0
 offset_left = -1064.0
 offset_top = 1282.0
 offset_right = -765.0
 offset_bottom = 1359.0
+texture_normal = ExtResource("2_kp4qr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/Return" unique_id=565165793]
+layout_mode = 0
+offset_right = 298.0
+offset_bottom = 64.0
+theme_override_colors/font_shadow_color = Color(0, 0.116986625, 0.30218932, 0.60784316)
 theme_override_fonts/font = ExtResource("2_hhqjc")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Title" type="RichTextLabel" parent="Container" unique_id=555151454]
 z_index = 1
