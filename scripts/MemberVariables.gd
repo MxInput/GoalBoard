@@ -18,6 +18,7 @@ func _ready() -> void:
 		new_member.month_order = Member.DateOrders.MONTH_FIRST;
 		new_member.is_12_hr = true;
 		new_member.current_background = backgrounds[0];
+		new_member.total_completed_orders = 0;
 		
 func write_save() -> void:
 	var error_code := ResourceSaver.save(new_member, SAVE_PATH)

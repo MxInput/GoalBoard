@@ -37,6 +37,8 @@ var background_list := Background_List.new();
 @export var draw_button_3 : TextureButton;
 @export var draw_button_4 : TextureButton;
 
+@export var goal_counter : Label;
+@export var completed_counter : Label;
 
 func _ready() -> void:
 	var found_bg = MemberVariables.new_member.current_background;
@@ -67,6 +69,9 @@ func change_background(found_bg) -> void:
 	draw_button_2.texture_normal = found_bg.dark_button_texture;
 	draw_button_3.texture_normal = found_bg.dark_button_texture;
 	draw_button_4.texture_normal = found_bg.dark_button_texture;
+	
+	goal_counter.set("theme_override_colors/font_color", found_bg.color7); 
+	completed_counter.set("theme_override_colors/font_color", found_bg.color7); 
 	
 func _on_backgrounds_button_down() -> void:
 	container.visible = false;

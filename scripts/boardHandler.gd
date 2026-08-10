@@ -50,6 +50,8 @@ func _on_button_button_down() -> void:
 	var camera : Camera2D = menu.get_child(0).find_child("Camera2D");
 	camera.make_current();
 	
+	var goal_creation = menu.find_child("GoalCreation");
+	
 	var menu_container = menu.get_child(0);
 	menu_container.visible = true;
 	
@@ -63,6 +65,9 @@ func _on_button_button_down() -> void:
 		if (control_obj.name != "DrawingTab" && control_obj.name != "Warning"):
 			control_obj.visible = true;
 
+		if (control_obj.name == "GoalCounter"):
+			goal_creation.activate_goal_counter();
+			
 func _on_clear_button_down() -> void:
 	delete_all_goals();
 	

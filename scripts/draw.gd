@@ -102,6 +102,8 @@ func _on_finish_button_down() -> void:
 	MemberVariables.new_member.unfinished_goals.remove_at(MemberVariables.new_member.unfinished_goals.find(current_goal));
 	MemberVariables.new_member.completed_goals.push_back(new_completed_goal);
 	
+	MemberVariables.new_member.total_completed_orders += 1;
+
 	MemberVariables.write_save();
 	
 	drawable_texture.setup(texture_size.x, texture_size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8);

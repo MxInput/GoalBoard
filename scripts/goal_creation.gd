@@ -23,6 +23,7 @@ var max_text_length := 300;
 var filled := false;
 
 @export var goal_counter : Label;
+@export var completed_counter : Label;
 
 func _ready() -> void:
 	if (MemberVariables.new_member.unfinished_goals.size() > 0):
@@ -64,6 +65,15 @@ func _ready() -> void:
 		else:
 			goal_counter.text = str(num_goals) + " goal in progress.";
 	
+	var total_completed_orders = MemberVariables.new_member.total_completed_orders;
+	if (total_completed_orders <= 0):
+		completed_counter.visible = false;
+	else:
+		if (total_completed_orders > 1):
+			completed_counter.text = str(total_completed_orders) + " goals completed (lifetime)";
+		else:
+			completed_counter.text = str(total_completed_orders) + " goal completed (lifetime)";
+		
 func _on_text_edit_text_changed() -> void:
 	var new_text := desc_box.text;
 	
@@ -166,16 +176,21 @@ func _on_v_box_container_child_entered_tree(node: Node) -> void:
 			else:
 				node.visible = false;
 			
-		var num_goals = (v_box.get_child_count() - 1);
-	
-		if (num_goals > 0):
-			goal_counter.visible = true;
-			
-			if (num_goals > 1):
-				goal_counter.text = str(num_goals) + " goals in progress.";
-			else:
-				goal_counter.text = str(num_goals) + " goal in progress.";
+		activate_goal_counter();
 
+func activate_goal_counter() -> void:
+	var num_goals = (v_box.get_child_count() - 1);
+	
+	if (num_goals > 0):
+		goal_counter.visible = true;
+			
+		if (num_goals > 1):
+			goal_counter.text = str(num_goals) + " goals in progress.";
+		else:
+			goal_counter.text = str(num_goals) + " goal in progress.";
+	else:
+		goal_counter.visible = false;
+				
 func _on_v_box_container_child_exiting_tree(_node: Node) -> void:
 	var num_goals = (v_box.get_child_count() - 2);
 	
@@ -186,3 +201,12 @@ func _on_v_box_container_child_exiting_tree(_node: Node) -> void:
 			goal_counter.text = str(num_goals) + " goals in progress.";
 		else:
 			goal_counter.text = str(num_goals) + " goal in progress.";
+
+func _process(delta: float) -> void:
+	var total_completed_orders = MemberVariables.new_member.total_completed_orders;
+	
+	if (total_completed_orders > 0):
+		if (total_completed_orders > 1):
+			completed_counter.text = str(total_completed_orders) + " goals completed (lifetime)";
+		else:
+			completed_counter.text = str(total_completed_orders) + " goal completed (lifetime)";

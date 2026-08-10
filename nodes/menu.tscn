@@ -29,7 +29,7 @@ load_path = "res://.godot/imported/brush_stroke.png-93321f4a05b9af1260fd54028be7
 
 [node name="Camera2D" type="Camera2D" parent="Container" unique_id=1255491717]
 
-[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "search_box", "v_box", "warning", "goal_counter")]
+[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "search_box", "v_box", "warning", "goal_counter", "completed_counter")]
 script = ExtResource("1_jday5")
 desc_box = NodePath("../CanvasLayer/TextEdit")
 desc_count = NodePath("../CanvasLayer/DescCount")
@@ -41,6 +41,7 @@ v_box = NodePath("../CanvasLayer/ScrollContainer/VBoxContainer")
 temp_goal = ExtResource("2_ewqsw")
 warning = NodePath("../CanvasLayer/Warning")
 goal_counter = NodePath("../CanvasLayer/GoalCounter")
+completed_counter = NodePath("../CanvasLayer/CompletedCounter")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Container" unique_id=1076521952]
 
@@ -388,14 +389,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GoalCounter" type="Label" parent="Container/CanvasLayer" unique_id=1333733354]
-offset_left = 699.0
+offset_left = 605.0
 offset_top = 611.0
-offset_right = 1052.0
+offset_right = 839.0
 offset_bottom = 646.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
 theme_override_fonts/font = ExtResource("4_2l3r8")
 theme_override_font_sizes/font_size = 20
 text = "200 GOALS IN PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompletedCounter" type="Label" parent="Container/CanvasLayer" unique_id=1082409049]
+offset_left = 880.0
+offset_top = 611.0
+offset_right = 1114.0
+offset_bottom = 646.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("4_2l3r8")
+theme_override_font_sizes/font_size = 20
+text = "200 GOALS COMPLETED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -411,7 +424,7 @@ canvas_layer = NodePath("../Container/CanvasLayer")
 settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
-[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button", "erase_all_button", "drawing_frame", "drawing_title", "draw_button_1", "draw_button_2", "draw_button_3", "draw_button_4")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button", "erase_all_button", "drawing_frame", "drawing_title", "draw_button_1", "draw_button_2", "draw_button_3", "draw_button_4", "goal_counter", "completed_counter")]
 script = ExtResource("13_jy1x6")
 canvas_layer = NodePath("../Container/CanvasLayer")
 backgrond_template = ExtResource("14_o74un")
@@ -434,6 +447,8 @@ draw_button_1 = NodePath("../Container/CanvasLayer/DrawingTab/Finish")
 draw_button_2 = NodePath("../Container/CanvasLayer/DrawingTab/Eraser")
 draw_button_3 = NodePath("../Container/CanvasLayer/DrawingTab/Size")
 draw_button_4 = NodePath("../Container/CanvasLayer/DrawingTab/Clear")
+goal_counter = NodePath("../Container/CanvasLayer/GoalCounter")
+completed_counter = NodePath("../Container/CanvasLayer/CompletedCounter")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="child_entered_tree" from="Container/CanvasLayer/ScrollContainer/VBoxContainer" to="Container/GoalCreation" method="_on_v_box_container_child_entered_tree"]
