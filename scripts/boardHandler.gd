@@ -64,6 +64,9 @@ func _on_button_button_down() -> void:
 			control_obj.visible = true;
 
 func _on_clear_button_down() -> void:
+	delete_all_goals();
+	
+func delete_all_goals() -> void:
 	var all_drawings = tree.get_nodes_in_group("drawing");
 	
 	for drawing in all_drawings:

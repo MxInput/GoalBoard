@@ -20,6 +20,10 @@ var max_text_length := 300;
 
 @export var warning : Label;
 
+var filled := false;
+
+@export var goal_counter : Label;
+
 func _ready() -> void:
 	if (MemberVariables.new_member.unfinished_goals.size() > 0):
 		for unfinished_goal in MemberVariables.new_member.unfinished_goals:
@@ -47,7 +51,19 @@ func _ready() -> void:
 			new_goal.find_child("Delete").unfinished_goal = unfinished_goal;
 			new_goal.find_child("Delete").texture_normal = bg.button_texture;
 			new_goal.find_child("Delete").get_child(0).set("theme_override_colors/font_color", bg.color5);
-			
+	
+	filled = true;
+	
+	var num_goals = (v_box.get_child_count() - 1);
+	
+	if (num_goals <= 0):
+		goal_counter.visible = false;
+	else:
+		if (num_goals > 1):
+			goal_counter.text = str(num_goals) + " goals in progress.";
+		else:
+			goal_counter.text = str(num_goals) + " goal in progress.";
+	
 func _on_text_edit_text_changed() -> void:
 	var new_text := desc_box.text;
 	
@@ -79,9 +95,6 @@ func _on_create_button_down() -> void:
 		var new_goal := temp_goal.instantiate();
 		new_goal.texture = bg.goal_texture;
 		
-		v_box.add_child(new_goal);
-		v_box.move_child(v_box.find_child("Space"), -1);
-		
 		new_goal.find_child("Identifier").text = identifier_string;
 		new_goal.find_child("Identifier").set("theme_override_colors/font_color", bg.color4);
 		
@@ -102,6 +115,9 @@ func _on_create_button_down() -> void:
 		new_goal.find_child("Delete").unfinished_goal = goal_entry;
 		new_goal.find_child("Delete").texture_normal = bg.button_texture;
 		new_goal.find_child("Delete").get_child(0).set("theme_override_colors/font_color", bg.color5);
+		
+		v_box.add_child(new_goal);
+		v_box.move_child(v_box.find_child("Space"), -1);
 			
 		MemberVariables.new_member.unfinished_goals.push_back(goal_entry);
 		MemberVariables.write_save();
@@ -116,13 +132,16 @@ func delete_goal(selected_goal : UnfinishedGoal) -> void:
 	MemberVariables.write_save();
 
 func _on_erase_all_button_down() -> void:
+	delete_all_goals();
+	
+func delete_all_goals() -> void:
 	for found_goal in v_box.get_children():
 		if (found_goal.name != "Space"):
 			found_goal.queue_free();
 	MemberVariables.new_member.unfinished_goals.clear();
 	MemberVariables.write_save();
 
-func _on_search_text_changed(new_text: String) -> void:
+func _on_search_text_changed(_new_text: String) -> void:
 	for found_goal in v_box.get_children():
 		if (found_goal.name != "Space"):
 			if (search_box.text.is_empty()):
@@ -135,3 +154,35 @@ func _on_search_text_changed(new_text: String) -> void:
 				else:
 					found_goal.visible = false;
 			
+func _on_v_box_container_child_entered_tree(node: Node) -> void:
+	if (filled):
+		var identifier_to_check = node.find_child("Complete", true, false).unfinished_goal.identifier;
+
+		if (search_box.text.is_empty()):
+			node.visible = true;
+		else:
+			if (identifier_to_check.find(search_box.text) != -1):
+				node.visible = true;
+			else:
+				node.visible = false;
+			
+		var num_goals = (v_box.get_child_count() - 1);
+	
+		if (num_goals > 0):
+			goal_counter.visible = true;
+			
+			if (num_goals > 1):
+				goal_counter.text = str(num_goals) + " goals in progress.";
+			else:
+				goal_counter.text = str(num_goals) + " goal in progress.";
+
+func _on_v_box_container_child_exiting_tree(_node: Node) -> void:
+	var num_goals = (v_box.get_child_count() - 2);
+	
+	if (num_goals <= 0):
+		goal_counter.visible = false;
+	else:
+		if (num_goals > 1):
+			goal_counter.text = str(num_goals) + " goals in progress.";
+		else:
+			goal_counter.text = str(num_goals) + " goal in progress.";
