@@ -29,13 +29,14 @@ load_path = "res://.godot/imported/brush_stroke.png-93321f4a05b9af1260fd54028be7
 
 [node name="Camera2D" type="Camera2D" parent="Container" unique_id=1255491717]
 
-[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "v_box", "warning")]
+[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "search_box", "v_box", "warning")]
 script = ExtResource("1_jday5")
 desc_box = NodePath("../CanvasLayer/TextEdit")
 desc_count = NodePath("../CanvasLayer/DescCount")
 create_button = NodePath("../CanvasLayer/Create")
 identifier_box = NodePath("../CanvasLayer/Identifier")
 identifier_count = NodePath("../CanvasLayer/IdentifierCount")
+search_box = NodePath("../CanvasLayer/Search")
 v_box = NodePath("../CanvasLayer/ScrollContainer/VBoxContainer")
 temp_goal = ExtResource("2_ewqsw")
 warning = NodePath("../CanvasLayer/Warning")
@@ -60,7 +61,7 @@ wrap_mode = 1
 offset_left = 28.0
 offset_top = 103.0
 offset_right = 551.0
-offset_bottom = 578.0
+offset_bottom = 561.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -134,9 +135,29 @@ layout_mode = 0
 offset_right = 353.0
 offset_bottom = 52.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
-theme_override_fonts/font = ExtResource("5_13fdh")
+theme_override_fonts/font = ExtResource("4_2l3r8")
 theme_override_font_sizes/font_size = 30
 text = "CREATE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EraseAll" type="TextureButton" parent="Container/CanvasLayer" unique_id=866452933]
+offset_left = 699.0
+offset_top = 7.0
+offset_right = 1055.0
+offset_bottom = 49.0
+texture_normal = ExtResource("6_jy1x6")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Container/CanvasLayer/EraseAll" unique_id=834032696]
+layout_mode = 0
+offset_right = 353.0
+offset_bottom = 35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5529412)
+theme_override_fonts/font = ExtResource("4_2l3r8")
+theme_override_font_sizes/font_size = 20
+text = "ERASE ALL UNFINISHED GOALS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -147,6 +168,15 @@ offset_right = 1139.0
 offset_bottom = 150.0
 theme_override_fonts/font = ExtResource("4_2l3r8")
 placeholder_text = "Enter an Identifier for this goal."
+max_length = 50
+
+[node name="Search" type="LineEdit" parent="Container/CanvasLayer" unique_id=756781359]
+offset_left = 37.0
+offset_top = 568.0
+offset_right = 553.0
+offset_bottom = 599.0
+theme_override_fonts/font = ExtResource("4_2l3r8")
+placeholder_text = "Search for a goal using its identifier."
 max_length = 50
 
 [node name="BoardButton" type="TextureButton" parent="Container/CanvasLayer" unique_id=1778099135]
@@ -368,7 +398,7 @@ canvas_layer = NodePath("../Container/CanvasLayer")
 settings_template = ExtResource("12_13fdh")
 container = NodePath("../Container")
 
-[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button", "drawing_frame", "drawing_title", "draw_button_1", "draw_button_2", "draw_button_3", "draw_button_4")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=1013893778 node_paths=PackedStringArray("canvas_layer", "container", "background", "clock", "limit_teller1", "limit_teller2", "title1", "title2", "backgrounds_button", "settings_button", "board_button", "create_button", "erase_all_button", "drawing_frame", "drawing_title", "draw_button_1", "draw_button_2", "draw_button_3", "draw_button_4")]
 script = ExtResource("13_jy1x6")
 canvas_layer = NodePath("../Container/CanvasLayer")
 backgrond_template = ExtResource("14_o74un")
@@ -384,6 +414,7 @@ backgrounds_button = NodePath("../Container/CanvasLayer/BackgroundButton")
 settings_button = NodePath("../Container/CanvasLayer/SettingsButton")
 board_button = NodePath("../Container/CanvasLayer/BoardButton")
 create_button = NodePath("../Container/CanvasLayer/Create")
+erase_all_button = NodePath("../Container/CanvasLayer/EraseAll")
 drawing_frame = NodePath("../Container/CanvasLayer/DrawingTab/Background")
 drawing_title = NodePath("../Container/CanvasLayer/DrawingTab/Description")
 draw_button_1 = NodePath("../Container/CanvasLayer/DrawingTab/Finish")
@@ -393,7 +424,9 @@ draw_button_4 = NodePath("../Container/CanvasLayer/DrawingTab/Clear")
 
 [connection signal="text_changed" from="Container/CanvasLayer/TextEdit" to="Container/GoalCreation" method="_on_text_edit_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/Create" to="Container/GoalCreation" method="_on_create_button_down"]
+[connection signal="button_down" from="Container/CanvasLayer/EraseAll" to="Container/GoalCreation" method="_on_erase_all_button_down"]
 [connection signal="text_changed" from="Container/CanvasLayer/Identifier" to="Container/GoalCreation" method="_on_identifier_text_changed"]
+[connection signal="text_changed" from="Container/CanvasLayer/Search" to="Container/GoalCreation" method="_on_search_text_changed"]
 [connection signal="button_down" from="Container/CanvasLayer/BoardButton" to="Container/CanvasLayer/DrawingTab/Drawing" method="_on_board_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/SettingsButton" to="SettingsManager" method="_on_settings_button_down"]
 [connection signal="button_down" from="Container/CanvasLayer/BackgroundButton" to="BackgroundManager" method="_on_backgrounds_button_down"]

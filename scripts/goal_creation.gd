@@ -13,6 +13,8 @@ var max_text_length := 300;
 @export var identifier_box : LineEdit;
 @export var identifier_count : Label;
 
+@export var search_box : LineEdit;
+
 @export var v_box : VBoxContainer;
 @export var temp_goal : PackedScene;
 
@@ -112,3 +114,24 @@ func _on_identifier_text_changed(_new_text: String) -> void:
 func delete_goal(selected_goal : UnfinishedGoal) -> void:
 	MemberVariables.new_member.unfinished_goals.remove_at(MemberVariables.new_member.unfinished_goals.find(selected_goal));
 	MemberVariables.write_save();
+
+func _on_erase_all_button_down() -> void:
+	for found_goal in v_box.get_children():
+		if (found_goal.name != "Space"):
+			found_goal.queue_free();
+	MemberVariables.new_member.unfinished_goals.clear();
+	MemberVariables.write_save();
+
+func _on_search_text_changed(new_text: String) -> void:
+	for found_goal in v_box.get_children():
+		if (found_goal.name != "Space"):
+			if (search_box.text.is_empty()):
+				found_goal.visible = true;
+			else:
+				var identifier_to_check = found_goal.find_child("Complete", true, false).unfinished_goal.identifier;
+
+				if (identifier_to_check.find(search_box.text) != -1):
+					found_goal.visible = true;
+				else:
+					found_goal.visible = false;
+			

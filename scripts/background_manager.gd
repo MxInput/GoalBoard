@@ -27,6 +27,7 @@ var background_list := Background_List.new();
 @export var board_button : TextureButton;
 
 @export var create_button : TextureButton;
+@export var erase_all_button : TextureButton;
 
 @export var drawing_frame : ColorRect;
 @export var drawing_title : RichTextLabel;
@@ -35,6 +36,7 @@ var background_list := Background_List.new();
 @export var draw_button_2 : TextureButton;
 @export var draw_button_3 : TextureButton;
 @export var draw_button_4 : TextureButton;
+
 
 func _ready() -> void:
 	var found_bg = MemberVariables.new_member.current_background;
@@ -51,6 +53,7 @@ func change_background(found_bg) -> void:
 	title2.set("theme_override_colors/default_color", found_bg.color6); 
 	
 	create_button.texture_normal = found_bg.dark_button_texture;
+	erase_all_button.texture_normal = found_bg.dark_button_texture;
 	
 	board_button.texture_normal = found_bg.dark_small_button_texture;
 	settings_button.texture_normal = found_bg.dark_small_button_texture;
