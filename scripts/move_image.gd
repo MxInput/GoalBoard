@@ -12,6 +12,8 @@ var finished_move_timer : Timer;
 
 var last_position;
 
+@export var save_handler : Node;
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		if (!popup.hovering):
@@ -32,7 +34,14 @@ func _process(_delta: float) -> void:
 		
 		if (last_position != position):
 			last_position = position;
+			
+			if (!save_handler.to_save.is_empty()):
+				for image_to_save in save_handler.to_save:
+					image_to_save.get_child(0).stop();
+					save_handler.to_save.erase(image_to_save);
+					
 			finished_move_timer.start();	
+			save_handler.to_save.push_back(self);
 		
 	if (holding):
 		popup.visible = false;
@@ -75,6 +84,7 @@ func _on_mouse_exited() -> void:
 		popup.saved_image = null;
 
 func _on_finish_move_timeout() -> void:
+	save_handler.to_save.clear();
 	var found_goal_index = MemberVariables.new_member.completed_goals.find(completed_goal);
 	var found_goal = MemberVariables.new_member.completed_goals.get(found_goal_index);
 	

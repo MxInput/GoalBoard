@@ -82,8 +82,10 @@ func _on_finish_button_down() -> void:
 	else:
 		board.get_child(0).visible = true;
 		
-	board.find_child("Camera2D").make_current();
-		
+	var board_camera = board.find_child("Camera2D");
+	board_camera.make_current();
+	board_camera.zoom = Vector2(0.4, 0.4);
+	
 	var new_board_drawing = board.find_child("Current").duplicate();
 	board.get_child(0).add_child(new_board_drawing);
 	new_board_drawing.texture = ImageTexture.create_from_image(drawable_texture.get_image());
@@ -119,8 +121,10 @@ func _on_board_button_down() -> void:
 	else:
 		board.get_child(0).visible = true;
 		
-	board.find_child("Camera2D").make_current();
-
+	var board_camera = board.find_child("Camera2D");
+	board_camera.make_current();
+	board_camera.zoom = Vector2(0.4, 0.4);
+	
 func _on_eraser_button_down() -> void:
 	var eraser_button_text = eraser_button.get_child(0);
 	

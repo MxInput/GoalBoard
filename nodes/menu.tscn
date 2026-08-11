@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b52ijj6tvk7hc" path="res://images/backgrounds/pink_stuff/bow_bg.png" id="3_fhr7y"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="4_2l3r8"]
 [ext_resource type="FontFile" uid="uid://dqdh0mlmh637c" path="res://fonts/SparkyStonesRegular-BW6ld.ttf" id="5_13fdh"]
+[ext_resource type="Script" uid="uid://c4s80pfrpd8b6" path="res://nodes/limit_effects.gd" id="6_7lium"]
 [ext_resource type="Texture2D" uid="uid://crkrawtdfd52a" path="res://images/backgrounds/pink_stuff/bow_button.png" id="6_jy1x6"]
 [ext_resource type="Script" uid="uid://5y66omfn7043" path="res://scripts/draw.gd" id="7_o74un"]
 [ext_resource type="Texture2D" uid="uid://bd5xygtchbwgk" path="res://images/backgrounds/sun_stuff/small_sun_button.png" id="7_pys32"]
@@ -29,7 +30,7 @@ load_path = "res://.godot/imported/brush_stroke.png-93321f4a05b9af1260fd54028be7
 
 [node name="Camera2D" type="Camera2D" parent="Container" unique_id=1255491717]
 
-[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "search_box", "v_box", "warning", "goal_counter", "completed_counter")]
+[node name="GoalCreation" type="Node" parent="Container" unique_id=1815402166 node_paths=PackedStringArray("desc_box", "desc_count", "create_button", "identifier_box", "identifier_count", "search_box", "v_box", "warning", "goal_counter", "completed_counter", "limit1", "limit2")]
 script = ExtResource("1_jday5")
 desc_box = NodePath("../CanvasLayer/TextEdit")
 desc_count = NodePath("../CanvasLayer/DescCount")
@@ -42,6 +43,8 @@ temp_goal = ExtResource("2_ewqsw")
 warning = NodePath("../CanvasLayer/Warning")
 goal_counter = NodePath("../CanvasLayer/GoalCounter")
 completed_counter = NodePath("../CanvasLayer/CompletedCounter")
+limit1 = NodePath("../CanvasLayer/DescCount")
+limit2 = NodePath("../CanvasLayer/IdentifierCount")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Container" unique_id=1076521952]
 
@@ -113,6 +116,7 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 text = "0/300"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_7lium")
 
 [node name="IdentifierCount" type="Label" parent="Container/CanvasLayer" unique_id=45195213]
 offset_left = 626.0
@@ -124,6 +128,7 @@ theme_override_fonts/font = ExtResource("4_2l3r8")
 text = "0/50"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_7lium")
 
 [node name="Create" type="TextureButton" parent="Container/CanvasLayer" unique_id=115747629]
 offset_left = 710.0

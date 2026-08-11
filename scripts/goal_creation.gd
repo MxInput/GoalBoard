@@ -25,6 +25,9 @@ var filled := false;
 @export var goal_counter : Label;
 @export var completed_counter : Label;
 
+@export var limit1 : Label;
+@export var limit2 : Label;
+
 func _ready() -> void:
 	if (MemberVariables.new_member.unfinished_goals.size() > 0):
 		for unfinished_goal in MemberVariables.new_member.unfinished_goals:
@@ -82,6 +85,9 @@ func _on_text_edit_text_changed() -> void:
 		
 		desc_box.set_caret_column(cursor_col);
 		desc_box.set_caret_line(cursor_line);
+		
+	if (new_text.length() == max_text_length):
+		limit1.jump();
 	
 	current_text = desc_box.text;
 	cursor_col = desc_box.get_caret_column();
@@ -134,9 +140,12 @@ func _on_create_button_down() -> void:
 	else:
 		warning.visible = true;
 
-func _on_identifier_text_changed(_new_text: String) -> void:
+func _on_identifier_text_changed(new_text: String) -> void:
 	identifier_count.text = str(identifier_box.text.length()) + "/" + str(identifier_box.max_length);
 
+	if (new_text.length() == identifier_box.max_length):
+		limit2.jump();
+		
 func delete_goal(selected_goal : UnfinishedGoal) -> void:
 	MemberVariables.new_member.unfinished_goals.remove_at(MemberVariables.new_member.unfinished_goals.find(selected_goal));
 	MemberVariables.write_save();
@@ -202,7 +211,7 @@ func _on_v_box_container_child_exiting_tree(_node: Node) -> void:
 		else:
 			goal_counter.text = str(num_goals) + " goal in progress.";
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var total_completed_orders = MemberVariables.new_member.total_completed_orders;
 	
 	if (total_completed_orders > 0):
@@ -210,3 +219,6 @@ func _process(delta: float) -> void:
 			completed_counter.text = str(total_completed_orders) + " goals completed (lifetime)";
 		else:
 			completed_counter.text = str(total_completed_orders) + " goal completed (lifetime)";
+	else:
+		completed_counter.visible = false;
+		

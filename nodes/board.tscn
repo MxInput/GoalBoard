@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3lgpyn65g6ki" path="res://scripts/boardHandler.gd" id="1_inolc"]
 [ext_resource type="Script" uid="uid://dtxvstvg7jirl" path="res://scripts/move_camera.gd" id="1_k4sgw"]
+[ext_resource type="Script" uid="uid://b5siw0e01qdtd" path="res://nodes/save_handler.gd" id="2_o1d5c"]
 [ext_resource type="Script" uid="uid://b22nskl2gxpp1" path="res://scripts/move_image.gd" id="2_xy510"]
 [ext_resource type="Texture2D" uid="uid://ci8pg4cndtkm5" path="res://images/backgrounds/pink_stuff/goal_pink.png" id="4_f201g"]
 [ext_resource type="FontFile" uid="uid://bkiyyl5tchfcx" path="res://fonts/RonysiswadiArchitect4-qZmp2.ttf" id="5_8forb"]
@@ -28,6 +29,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="SaveHandler" type="Node" parent="Container" unique_id=252778053]
+script = ExtResource("2_o1d5c")
 
 [node name="Background" type="ColorRect" parent="Container" unique_id=151846489]
 layout_mode = 0
@@ -59,13 +63,14 @@ limit_right = 1681
 limit_bottom = 1441
 script = ExtResource("1_k4sgw")
 
-[node name="Current" type="TextureRect" parent="Container" unique_id=1768887880 node_paths=PackedStringArray("popup") groups=["drawing"]]
+[node name="Current" type="TextureRect" parent="Container" unique_id=1768887880 node_paths=PackedStringArray("popup", "save_handler") groups=["drawing"]]
 visible = false
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 256.0
 script = ExtResource("2_xy510")
 popup = NodePath("../Popup")
+save_handler = NodePath("../SaveHandler")
 
 [node name="FinishMove" type="Timer" parent="Container/Current" unique_id=2058257286]
 wait_time = 3.0
